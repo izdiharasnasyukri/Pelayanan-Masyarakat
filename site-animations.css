@@ -1,0 +1,149 @@
+:root {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+.site-scroll-progress {
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #176b58, #d5aa5a);
+  transform: scaleX(var(--site-scroll-progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.site-scrolled {
+  box-shadow: 0 8px 28px rgba(24, 53, 47, 0.1) !important;
+  transition: box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.site-hero {
+  animation: site-hero-arrive 0.8s both;
+}
+
+.site-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.65s ease,
+    transform 0.65s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.site-reveal.site-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-interactive-card {
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.75, 0.25, 1),
+    box-shadow 0.3s ease,
+    border-color 0.25s ease;
+}
+
+.site-interactive-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 36px rgba(24, 53, 47, 0.12);
+}
+
+.site-interactive-card img {
+  transition: filter 0.3s ease;
+}
+
+.site-interactive-card:hover img {
+  filter: saturate(1.08);
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition-timing-function: ease;
+}
+
+a,
+button {
+  transition-property: color, background-color, border-color, box-shadow, transform;
+  transition-duration: 0.2s;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #d5aa5a;
+  outline-offset: 3px;
+}
+
+.site-back-to-top {
+  position: fixed;
+  z-index: 1020;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  color: #fff;
+  background: #176b58;
+  box-shadow: 0 8px 24px rgba(16, 75, 64, 0.25);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.site-back-to-top.site-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.site-back-to-top:hover {
+  color: #fff;
+  background: #104b40;
+  transform: translateY(-3px);
+}
+
+@keyframes site-hero-arrive {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 575.98px) {
+  .site-back-to-top {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .site-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

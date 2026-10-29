@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+
+.izin-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+    padding: 25px 32px;
+    border: 1px solid #d5e3ed;
+    border-radius: 5px;
+    background-color: #f5faff;
+
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 260' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23c9dff0' stroke-width='1.1'%3E%3Cpath d='M-20 20 C180 -70 300 10 450 130 S800 190 1120 145'/%3E%3Cpath d='M-20 90 C150 0 280 50 430 160 S780 210 1120 155'/%3E%3Cpath d='M-20 155 C160 55 280 95 440 195 S800 225 1120 175'/%3E%3Cpath d='M-20 220 C160 110 280 150 450 240 S800 245 1120 195'/%3E%3Cpath d='M-20 270 C160 160 290 200 450 290 S800 265 1120 215'/%3E%3C/g%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+
+.judul-izin {
+    position: relative;
+    z-index: 1;
+    color: #123b5d;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.28;
+    margin: 0;
+}
+
+
+.deskripsi-izin {
+    position: relative;
+    z-index: 1;
+    color: #536078;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+
+.tombol-izin {
+    position: relative;
+    z-index: 1;
+    border-radius: 9px;
+    padding: 7px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0645a5;
+    border-color: #0645a5;
+    background-color: white;
+}
+
+    {
+  background-color: #0645a5;
+    border-color: #0645a5;
+    color: white;
+    }
+
+
+@media (max-width: 767px) {
+     {
+        padding: 24px 20px;
+    }
+
+    {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+     {
+        font-size: 15px;
+    }
+}
+
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #151515;
+            background-color: #fff;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .see-more {
+            color: #004a9f;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .main-news img {
+            width: 100%;
+            height: 297px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .main-news h3 {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        .news-date {
+            color: #858585;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .side-news {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 35px;
+            align-items: flex-start;
+        }
+
+        .side-news img {
+            width: 175px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .side-news h3 {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .news-link {
+            color: #151515;
+            text-decoration: none;
+        }
+
+        .news-link:hover {
+            color: #0056b3;
+        }
+
+        @media (max-width: 767px) {
+            .main-news img {
+                height: 240px;
+            }
+
+            .side-news {
+                gap: 14px;
+                margin-bottom: 24px;
+            }
+
+            .side-news img {
+                width: 120px;
+                height: 85px;
+            }
+
+            .side-news h3 {
+                font-size: 14px;
+            }
+
+            .main-news h3 {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+        }
+    
+        

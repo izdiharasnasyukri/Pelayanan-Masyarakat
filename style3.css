@@ -1,0 +1,61 @@
+.password-title {
+  color: #092344;
+  font-weight: 600;
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.password-desc {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 28px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .form-control {
+  padding-right: 48px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  border: none;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.toggle-password:hover {
+  color: #198754;
+}
+
+.strength-bars {
+  display: flex;
+  gap: 6px;
+  margin-top: -5px;
+  margin-bottom: 8px;
+}
+
+.strength-bars span {
+  height: 5px;
+  flex: 1;
+  border-radius: 5px;
+  background: #dedede;
+  transition: background .3s ease;
+}
+
+.password-hint {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-top: -5px;
+}
+
+#confirmHint {
+  margin-top: -7px;
+}
