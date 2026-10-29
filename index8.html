@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b58">
+  <title>Demo Panduan Usaha | Portal Layanan Publik</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #263746;
+      --muted: #687782;
+      --blue: #245b78;
+      --paper: #f7f8f9;
+      --line: #e1e5e8;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .topbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-wrap, main, footer {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav-wrap {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 150px;
+      height: 38px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    .nav-link {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 64px 0 72px;
+      background: #edf3f6;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 620px;
+      margin: 0;
+      font-size: clamp(36px, 5vw, 58px);
+      letter-spacing: -.04em;
+      line-height: 1.08;
+    }
+
+    .hero-copy {
+      max-width: 550px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-note {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .preview-card, .form-card, .side-card, .result-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+    }
+
+    .preview-card { padding: 24px; }
+
+    .preview-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .status-pill {
+      padding: 5px 9px;
+      border-radius: 6px;
+      color: #47645f;
+      background: #eef3f1;
+      font-size: 11px;
+    }
+
+    .preview-row {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-top: 19px;
+    }
+
+    .preview-icon, .benefit-icon {
+      display: grid;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 9px;
+      color: var(--blue);
+      background: #edf3f6;
+    }
+
+    .preview-icon {
+      width: 43px;
+      height: 43px;
+      font-size: 20px;
+    }
+
+    .preview-row strong, .preview-row small { display: block; }
+    .preview-row strong { font-size: 14px; }
+    .preview-row small { margin-top: 2px; color: var(--muted); font-size: 12px; }
+
+    main { padding: 58px 0 76px; }
+
+    .section-heading {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(25px, 3vw, 34px);
+      letter-spacing: -.025em;
+    }
+
+    .section-heading p { margin: 9px 0 0; color: var(--muted); }
+
+    .checker {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .form-card { padding: clamp(22px, 4vw, 36px); }
+
+    .step-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .step-number {
+      display: grid;
+      width: 29px;
+      height: 29px;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--blue);
+    }
+
+    .field { margin-bottom: 21px; }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .field-hint, .optional {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .field-hint { display: block; margin-top: 6px; }
+    .optional { margin-left: 4px; }
+
+    input, select {
+      width: 100%;
+      min-height: 49px;
+      padding: 11px 14px;
+      border: 1px solid #d4dce1;
+      border-radius: 8px;
+      color: var(--ink);
+      background: var(--white);
+      font: inherit;
+      font-size: 14px;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--blue);
+      outline: 3px solid rgba(36, 91, 120, .12);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .submit-button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 21px;
+      border: 0;
+      border-radius: 8px;
+      color: var(--white);
+      background: var(--blue);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 750;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .submit-button:hover { background: #19445b; }
+    .submit-button:active { transform: translateY(1px); }
+
+    .submit-button:focus-visible, .nav-link:focus-visible, .brand:focus-visible {
+      outline: 3px solid #f1bf65;
+      outline-offset: 3px;
+    }
+
+    .submit-hint {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .form-error {
+      margin: 12px 0 0;
+      color: #a52a2a;
+      font-size: 13px;
+    }
+
+    .suggestion-card {
+      margin: 2px 0 22px;
+      padding: 17px 18px;
+      border: 1px solid #d5e3ed;
+      border-radius: 9px;
+      background: #f5faff;
+    }
+
+    .suggestion-card h3 { margin: 0; color: var(--blue); font-size: 15px; }
+    .suggestion-card p { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .suggestion-card ul { margin: 10px 0 0; padding-left: 19px; color: var(--ink); font-size: 13px; }
+    .suggestion-card li + li { margin-top: 5px; }
+
+    .side-card { padding: 23px; }
+    .side-card h3 { margin: 0 0 17px; font-size: 16px; }
+
+    .benefit {
+      display: flex;
+      gap: 12px;
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .benefit-icon {
+      width: 30px;
+      height: 30px;
+      font-weight: 800;
+    }
+
+    .benefit strong { display: block; margin-bottom: 2px; color: var(--ink); }
+
+    .result-card {
+      display: none;
+      margin-top: 22px;
+      padding: 24px;
+      border-color: #b9ddd0;
+      background: #f5f8f6;
+    }
+
+    .result-card.is-visible { display: block; }
+    .result-card h3 { margin: 0 0 7px; font-size: 18px; }
+    .result-card p, .result-card ul { color: #47645f; font-size: 14px; }
+    .result-card p { margin: 6px 0; }
+    .result-card ul { margin: 12px 0 0; padding-left: 20px; }
+
+    .disclaimer {
+      margin-top: 24px;
+      padding: 15px 17px;
+      border-left: 3px solid #c5a86c;
+      border-radius: 0 6px 6px 0;
+      color: #625b4f;
+      background: #faf8f2;
+      font-size: 12px;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .hero { padding: 52px 0 58px; }
+      .hero-inner, .checker { grid-template-columns: 1fr; }
+      .hero-inner { gap: 30px; }
+      .preview-card { max-width: 520px; }
+      main { padding-top: 44px; }
+    }
+
+    @media (max-width: 500px) {
+      .nav-wrap, main, footer { width: min(100% - 28px, 1120px); }
+      .nav-wrap { min-height: 66px; }
+      .brand { gap: 8px; font-size: 13px; }
+      .brand-logo { width: 130px; height: 34px; }
+      .nav-link { font-size: 12px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .submit-button { width: 100%; }
+    }
+  </style>
+  <link rel="stylesheet" href="site-animations.css">
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav-wrap" aria-label="Navigasi utama">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="logo%20ibad.jpg" alt="Logo Ibad Ar Rahman Islamic Boarding School">
+        <span>Pelayanan Publik</span>
+      </a>
+      <a class="nav-link" href="index.html">← Kembali ke Beranda</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="nav-wrap hero-inner">
+      <div>
+        <p class="eyebrow">Prototype · Panduan awal layanan usaha</p>
+        <h1>Mulai urus izin usaha dengan lebih yakin.</h1>
+        <p class="hero-copy">Ceritakan sedikit tentang usaha Anda untuk melihat daftar persiapan awal. Halaman ini hanya simulasi dan tidak mengajukan izin.</p>
+        <p class="hero-note">Gunakan data contoh. Jangan masukkan informasi pribadi atau data usaha yang sebenarnya.</p>
+      </div>
+      <div class="preview-card" aria-label="Contoh langkah yang akan ditampilkan">
+        <div class="preview-head">
+          <span>Ringkasan kebutuhan</span>
+          <span class="status-pill">Panduan awal</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-icon" aria-hidden="true">⌕</span>
+          <span><strong>Kenali jenis kegiatan</strong><small>Temukan klasifikasi usaha yang sesuai</small></span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-icon" aria-hidden="true">▤</span>
+          <span><strong>Siapkan data dasar</strong><small>Catat informasi yang mungkin dibutuhkan</small></span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-icon" aria-hidden="true">↗</span>
+          <span><strong>Periksa kanal resmi</strong><small>Pastikan persyaratan terbaru sebelum mengajukan</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="section-heading">
+      <h2>Cek kebutuhan awal usaha Anda</h2>
+      <p>Isi informasi singkat berikut agar kami dapat menyiapkan panduan yang lebih relevan.</p>
+    </div>
+
+    <div class="checker">
+      <div>
+        <form class="form-card" id="checkForm" novalidate>
+          <div class="step-label"><span class="step-number">1</span> Langkah 1 dari 1 — Informasi usaha</div>
+          <div class="field">
+            <label for="businessName">Nama usaha <span class="optional">(opsional)</span></label>
+            <input id="businessName" name="businessName" type="text" placeholder="Contoh: Kedai Kopi Pagi" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="businessType">Bidang usaha <span aria-hidden="true">*</span><span class="optional">(wajib)</span></label>
+            <select id="businessType" name="businessType" required aria-describedby="businessTypeHint formError">
+              <option value="">Pilih bidang usaha</option>
+              <option value="Makanan dan minuman">Makanan dan minuman</option>
+              <option value="Perdagangan atau ritel">Perdagangan atau ritel</option>
+              <option value="Jasa profesional">Jasa profesional</option>
+              <option value="Konstruksi">Konstruksi</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+            <span class="field-hint" id="businessTypeHint">Pilih bidang yang paling mendekati kegiatan utama usaha.</span>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="businessScale">Skala usaha <span class="optional">(opsional)</span></label>
+              <select id="businessScale" name="businessScale">
+                <option value="">Pilih skala</option>
+                <option value="Mikro">Mikro</option>
+                <option value="Kecil">Kecil</option>
+                <option value="Menengah">Menengah</option>
+                <option value="Besar">Besar</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="businessArea">Lokasi kegiatan <span class="optional">(opsional)</span></label>
+              <select id="businessArea" name="businessArea">
+                <option value="">Pilih lokasi</option>
+                <option value="Di rumah">Di rumah</option>
+                <option value="Di tempat usaha">Di tempat usaha</option>
+                <option value="Daring">Daring</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+          </div>
+          <section class="suggestion-card" id="suggestionCard" aria-live="polite" aria-atomic="true">
+            <h3 id="suggestionTitle">Saran langsung</h3>
+            <p id="suggestionSummary">Pilih bidang usaha untuk melihat saran persiapan yang relevan.</p>
+            <ul id="suggestionList"></ul>
+          </section>
+          <button class="submit-button" type="submit">Lihat Panduan Awal <span aria-hidden="true">→</span></button>
+          <p class="submit-hint">Hasil langsung ditampilkan di halaman ini.</p>
+          <p class="form-error" id="formError" role="alert" hidden>Pilih bidang usaha terlebih dahulu.</p>
+        </form>
+
+        <section class="result-card" id="resultCard" aria-live="polite" tabindex="-1">
+          <h3 id="resultTitle">Panduan awal Anda sudah siap</h3>
+          <p id="resultSummary"></p>
+          <ul id="resultList"></ul>
+          <div class="disclaimer">Hasil ini merupakan gambaran awal untuk membantu persiapan, bukan penetapan tingkat risiko atau keputusan perizinan resmi. Periksa persyaratan terbaru melalui OSS atau instansi berwenang.</div>
+        </section>
+      </div>
+
+      <aside class="side-card">
+        <h3>Mengapa perlu dicek?</h3>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">✓</span>
+          <span><strong>Lebih terarah</strong>Kenali informasi yang perlu dicari sebelum mengajukan izin.</span>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">✓</span>
+          <span><strong>Hemat waktu</strong>Siapkan data dasar usaha sejak awal.</span>
+        </div>
+        <div class="benefit">
+          <span class="benefit-icon" aria-hidden="true">✓</span>
+          <span><strong>Gunakan sumber resmi</strong>Pastikan detail akhir melalui OSS dan instansi terkait.</span>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>Prototype informasi, bukan layanan resmi atau penetapan perizinan. Periksa persyaratan terbaru melalui OSS dan instansi berwenang. <a href="ketentuan.html">Ketentuan & privasi demo</a>.</footer>
+
+  <script>
+    const checkForm = document.getElementById("checkForm");
+    const businessType = document.getElementById("businessType");
+    const businessName = document.getElementById("businessName");
+    const businessScale = document.getElementById("businessScale");
+    const businessArea = document.getElementById("businessArea");
+    const formError = document.getElementById("formError");
+    const resultCard = document.getElementById("resultCard");
+    const resultSummary = document.getElementById("resultSummary");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultList = document.getElementById("resultList");
+    const suggestionTitle = document.getElementById("suggestionTitle");
+    const suggestionSummary = document.getElementById("suggestionSummary");
+    const suggestionList = document.getElementById("suggestionList");
+
+    const guidanceByType = {
+      "Makanan dan minuman": [
+        "Tentukan kegiatan utama secara spesifik, misalnya produksi, penjualan, atau penyajian makanan dan minuman.",
+        "Periksa ketentuan yang relevan untuk produk dan tempat kegiatan melalui OSS atau instansi berwenang."
+      ],
+      "Perdagangan atau ritel": [
+        "Catat jenis barang yang dijual serta cara penjualannya agar klasifikasi kegiatan usaha lebih tepat.",
+        "Periksa persyaratan yang berlaku untuk produk dan lokasi kegiatan melalui OSS atau instansi berwenang."
+      ],
+      "Jasa profesional": [
+        "Jelaskan layanan utama yang diberikan dan siapa pengguna layanannya untuk membantu menentukan klasifikasi usaha.",
+        "Periksa apakah layanan atau profesi Anda memiliki persyaratan khusus melalui instansi berwenang."
+      ],
+      "Konstruksi": [
+        "Rinci jenis layanan konstruksi yang ditawarkan agar klasifikasi kegiatan usaha dapat diperiksa dengan tepat.",
+        "Periksa ketentuan kualifikasi dan persyaratan sektor konstruksi melalui OSS atau instansi berwenang."
+      ],
+      "Lainnya": [
+        "Tuliskan kegiatan utama usaha secara spesifik untuk membantu menemukan klasifikasi yang paling sesuai.",
+        "Konfirmasikan klasifikasi dan persyaratan kegiatan Anda melalui OSS atau instansi berwenang."
+      ]
+    };
+
+    function getSuggestions() {
+      if (!businessType.value) return [];
+      const suggestions = [...guidanceByType[businessType.value]];
+      if (businessScale.value) {
+        suggestions.push(`Pastikan data skala usaha (${businessScale.value.toLowerCase()}) sesuai dengan kondisi usaha saat ini.`);
+      }
+      if (businessArea.value === "Di rumah") {
+        suggestions.push("Periksa kesesuaian alamat kegiatan usaha dengan ketentuan daerah setempat.");
+      } else if (businessArea.value === "Di tempat usaha") {
+        suggestions.push("Siapkan alamat lengkap lokasi kegiatan untuk memudahkan pemeriksaan persyaratan.");
+      } else if (businessArea.value === "Daring") {
+        suggestions.push("Catat kanal penjualan dan cara usaha memenuhi pesanan pelanggan.");
+      } else if (businessArea.value === "Lainnya") {
+        suggestions.push("Catat lokasi kegiatan secara spesifik agar persyaratan yang diperiksa lebih sesuai.");
+      }
+
+      return suggestions;
+    }
+
+    function updateSuggestions() {
+      resultCard.classList.remove("is-visible");
+
+      if (!businessType.value) {
+        suggestionTitle.textContent = "Saran langsung";
+        suggestionSummary.textContent = "Pilih bidang usaha untuk melihat saran persiapan yang relevan.";
+        suggestionList.replaceChildren();
+        return;
+      }
+
+      suggestionTitle.textContent = `Saran untuk ${businessType.value}`;
+      suggestionSummary.textContent = businessName.value.trim()
+        ? `Rekomendasi awal untuk ${businessName.value.trim()}. Ubah pilihan untuk menyesuaikan saran.`
+        : "Saran akan menyesuaikan pilihan skala dan lokasi usaha Anda.";
+      suggestionList.replaceChildren(...getSuggestions().map((item) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = item;
+        return listItem;
+      }));
+    }
+
+    checkForm.addEventListener("input", updateSuggestions);
+    checkForm.addEventListener("change", updateSuggestions);
+
+    checkForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!businessType.value) {
+        formError.hidden = false;
+        businessType.focus();
+        return;
+      }
+
+      formError.hidden = true;
+      const name = businessName.value.trim();
+      const details = [
+        businessType.value,
+        businessScale.value && `skala ${businessScale.value.toLowerCase()}`,
+        businessArea.value && `berlokasi ${businessArea.value.toLowerCase()}`
+      ].filter(Boolean).join(", ");
+      const checklist = [
+        ...getSuggestions(),
+        "Siapkan identitas pemilik, alamat, dan data kegiatan usaha.",
+        "Periksa kode KBLI, tingkat risiko, dan persyaratan terbaru sebelum mengajukan."
+      ];
+
+      resultTitle.textContent = name ? `Panduan awal untuk ${name}` : "Panduan awal usaha Anda sudah siap";
+      resultSummary.textContent = `Anda memilih ${details}. Gunakan daftar ini sebagai persiapan awal.`;
+      resultList.replaceChildren(...checklist.map((item) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = item;
+        return listItem;
+      }));
+      resultCard.classList.add("is-visible");
+      resultCard.focus();
+    });
+
+    businessType.addEventListener("change", () => {
+      if (businessType.value) formError.hidden = true;
+    });
+  </script>
+  <script src="site-animations.js"></script>
+</body>
+</html>

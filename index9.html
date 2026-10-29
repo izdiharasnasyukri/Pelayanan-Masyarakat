@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b58">
+  <title>Demo Layanan Masyarakat | Portal Layanan Publik</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --portal-primary: #176b58;
+      --portal-accent: #d5aa5a;
+      --bg-surface: #f8fafc;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-subtle: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--bg-surface);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text-main);
+      padding: 40px 0;
+    }
+
+    .portal-header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .badge-portal {
+      background: rgba(23, 107, 88, 0.08);
+      color: var(--portal-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* Tracking Box Card */
+    .tracking-card {
+      background: linear-gradient(135deg, #176b58 0%, #104b40 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 25px rgba(23, 107, 88, 0.15);
+    }
+
+    .tracking-input-group .form-control {
+      border-radius: 12px 0 0 12px;
+      padding: 12px 16px;
+      border: none;
+      font-size: 0.95rem;
+    }
+
+    .tracking-input-group .btn {
+      border-radius: 0 12px 12px 0;
+      padding: 12px 24px;
+      background-color: var(--portal-accent);
+      border: none;
+      font-weight: 600;
+      color: #fff;
+      transition: background-color 0.2s ease;
+    }
+
+    .tracking-input-group .btn:hover {
+      background-color: #bd9144;
+    }
+
+    /* Service Grid Cards */
+    .service-card {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      height: 100%;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+      border-color: #cbd5e1;
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #e7f1eb;
+      color: var(--portal-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .service-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--portal-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Result Modal / Box */
+    .tracking-result {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      display: none;
+      font-size: 0.9rem;
+    }
+  </style>
+  <link rel="stylesheet" href="site-animations.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header Bagian -->
+    <div class="portal-header">
+      <a href="index.html" class="d-inline-flex align-items-center gap-2 text-decoration-none fw-bold mb-3" style="color: var(--portal-primary);">
+        <img src="logo%20ibad.jpg" alt="Logo Ibad Ar Rahman Islamic Boarding School" style="width: 150px; height: 38px; object-fit: contain; background: #fff; border-radius: 4px;"> Portal Layanan Publik
+      </a>
+      <div><span class="badge-portal">PROTOTYPE · INFORMASI UNTUK MASYARAKAT</span></div>
+      <h1 class="section-title">Jelajahi panduan dan layanan prototype</h1>
+      <p class="text-muted small mt-1">Halaman demonstrasi umum, bukan kanal resmi pemerintah dan belum terhubung ke sistem instansi.</p>
+    </div>
+
+    <!-- Simulasi lokal, tidak terhubung ke sistem pengajuan -->
+    <div class="tracking-card">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <h3 class="fw-bold mb-1" style="font-size: 1.2rem;">Simulasi Tampilan Status Tiket</h3>
+          <p class="text-light opacity-75 small mb-0">Masukkan kode bebas untuk melihat contoh tampilan. Ini bukan pelacakan pengajuan atau pengaduan sungguhan.</p>
+        </div>
+        <div class="col-lg-6">
+          <form id="trackingForm">
+            <div class="input-group tracking-input-group">
+              <input type="text" id="ticketInput" class="form-control" placeholder="Masukkan kode contoh" aria-label="Kode tiket simulasi" required>
+              <button type="submit" class="btn">Lihat Simulasi</button>
+            </div>
+          </form>
+          <div id="trackingResult" class="tracking-result">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <span class="badge bg-warning text-dark mb-1" id="resStatus">Status Simulasi</span>
+                <div class="fw-bold" id="resTitle">Contoh tampilan · bukan status pengajuan nyata</div>
+                <div class="small opacity-75" id="resDate">Data tidak terhubung ke sistem instansi.</div>
+              </div>
+              <i class="bi bi-arrow-repeat fs-3"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid Menu Layanan Masyarakat -->
+    <div class="row g-4">
+      
+      <!-- Layanan 1 -->
+      <div class="col-md-4">
+        <article class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-file-earmark-person"></i>
+          </div>
+          <h3>Informasi Layanan</h3>
+          <p>Kenali prinsip informasi layanan dan cara menemukan kanal instansi yang berwenang.</p>
+          <a class="service-link" href="index4.html">Baca informasi <i class="bi bi-arrow-right"></i></a>
+        </article>
+      </div>
+
+      <!-- Layanan 2 -->
+      <div class="col-md-4">
+        <article class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-chat-square-quote"></i>
+          </div>
+          <h3>Panduan Perizinan Usaha</h3>
+          <p>Lihat daftar persiapan umum. Hasilnya bukan keputusan izin atau pengajuan resmi.</p>
+          <a class="service-link" href="index7.html">Buka panduan demo <i class="bi bi-arrow-right"></i></a>
+        </article>
+      </div>
+
+      <!-- Layanan 3 -->
+      <div class="col-md-4">
+        <article class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-heart-pulse"></i>
+          </div>
+          <h3>Demo Akun</h3>
+          <p>Jelajahi alur antarmuka pembuatan akun menggunakan data contoh saja.</p>
+          <a class="service-link" href="index2.html">Coba alur demo <i class="bi bi-arrow-right"></i></a>
+        </article>
+      </div>
+
+      <div class="col-12 text-center">
+        <p class="small text-muted mt-0 mb-0">
+          <a href="ketentuan.html">Ketentuan & privasi prototype</a> ·
+          <a href="index.html">Kembali ke beranda</a>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Skrip Simulasi Tracking -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const trackingForm = document.getElementById('trackingForm');
+      const ticketInput = document.getElementById('ticketInput');
+      const trackingResult = document.getElementById('trackingResult');
+
+      trackingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const code = ticketInput.value.trim();
+
+        if (code !== '') {
+          // Tampilkan contoh lokal, bukan status yang berasal dari sistem layanan.
+          trackingResult.style.display = 'block';
+          document.getElementById('resStatus').textContent = 'Status Simulasi';
+          document.getElementById('resTitle').textContent = `Tiket: ${code.toUpperCase()}`;
+          document.getElementById('resDate').textContent = 'Data ini tidak terhubung ke sistem instansi.';
+        }
+      });
+    });
+  </script>
+
+  <script src="site-animations.js"></script>
+</body>
+</html>

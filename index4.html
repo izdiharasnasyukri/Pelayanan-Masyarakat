@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Informasi mengenai pelayanan publik yang mudah diakses, transparan, dan berorientasi kepada masyarakat.">
+    <meta name="theme-color" content="#176b58">
+    <title>Tentang Portal Layanan Publik</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.css" integrity="sha512-vWHsp0PuTxwRMLtGTnbS7PDNtI7yFmmiFq24hjcqpup/KK7ixxWdXwRmerG9gu7peaSRIVxpFcfBSVrGzWcF4w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+      :root {
+        --navy: #123b5d;
+        --blue: #075985;
+        --pale-blue: #eaf4f8;
+        --ink: #263746;
+        --muted: #637887;
+      }
+
+      body {
+        color: var(--ink);
+        background: #fff;
+        font-family: Arial, sans-serif;
+        line-height: 1.7;
+      }
+
+      main {
+        overflow-x: clip;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 3px 18px rgba(18, 59, 93, 0.08);
+      }
+
+      .brand-logo {
+        width: 150px;
+        height: 38px;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 4px;
+        transition: transform .3s ease;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 88px 0 92px;
+        background: linear-gradient(125deg, #f0f8fc 0%, #fff 64%, #f5f9ff 100%);
+      }
+
+      .hero::after {
+        position: absolute;
+        top: -150px;
+        right: -100px;
+        width: 460px;
+        height: 460px;
+        border: 1px solid rgba(7, 89, 133, 0.1);
+        border-radius: 50%;
+        box-shadow: 0 0 0 45px rgba(7, 89, 133, 0.025), 0 0 0 95px rgba(7, 89, 133, 0.02);
+        content: "";
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow {
+        color: var(--blue);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        max-width: 720px;
+        margin: 16px 0;
+        color: var(--navy);
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        font-weight: 750;
+        letter-spacing: -0.04em;
+        line-height: 1.12;
+      }
+
+      .hero p {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+
+      .btn-service {
+        border-color: var(--blue);
+        background: var(--blue);
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .btn-service:hover {
+        border-color: var(--navy);
+        background: var(--navy);
+        color: #fff;
+      }
+
+      .hero-note {
+        display: flex;
+        max-width: 410px;
+        gap: 16px;
+        align-items: center;
+        margin: 32px 0 0 auto;
+        padding: 22px;
+        border: 1px solid #dceaf1;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 18px 50px rgba(18, 59, 93, 0.08);
+      }
+
+      .hero-note-icon,
+      .service-icon {
+        display: grid;
+        width: 52px;
+        height: 52px;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 16px;
+        background: var(--pale-blue);
+        color: var(--blue);
+        font-size: 1.4rem;
+      }
+
+      .hero-note strong {
+        display: block;
+        color: var(--navy);
+      }
+
+      .hero-note span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .section-space {
+        padding: 76px 0;
+      }
+
+      .section-heading {
+        max-width: 650px;
+        margin: 0 auto 42px;
+        text-align: center;
+      }
+
+      .section-heading h2 {
+        margin: 8px 0 12px;
+        color: var(--navy);
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 700;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .service-card {
+        height: 100%;
+        padding: 28px;
+        border: 1px solid #e2ebf0;
+        border-radius: 18px;
+        background: #fff;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 35px rgba(18, 59, 93, 0.09);
+      }
+
+      .service-card h3 {
+        margin: 20px 0 8px;
+        color: var(--navy);
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .principles {
+        background: #f5f9fb;
+      }
+
+      .principle-item {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+        padding: 19px 0;
+        border-bottom: 1px solid #dce7ec;
+      }
+
+      .principle-item:last-child {
+        border-bottom: 0;
+      }
+
+      .principle-item i {
+        color: var(--blue);
+        font-size: 1.3rem;
+      }
+
+      .principle-item h3 {
+        margin: 0 0 4px;
+        color: var(--navy);
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+
+      .principle-item p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .cta-panel {
+        padding: 36px;
+        border-radius: 20px;
+        background: var(--navy);
+        color: #fff;
+      }
+
+      .cta-panel h2 {
+        margin-bottom: 8px;
+        font-weight: 700;
+      }
+
+      .cta-panel p {
+        margin: 0;
+        color: #d5e6ef;
+      }
+
+      footer {
+        padding: 24px 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      a:focus-visible,
+      button:focus-visible {
+        outline: 3px solid #e7ad38;
+        outline-offset: 3px;
+      }
+
+      @media (max-width: 767.98px) {
+        .hero {
+          padding: 64px 0;
+        }
+
+        .hero-note {
+          margin: 30px 0 0;
+        }
+
+        .section-space {
+          padding: 58px 0;
+        }
+
+        .cta-panel {
+          padding: 26px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="site-animations.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html" style="color: var(--navy);">
+          <img class="brand-logo" src="logo%20ibad.jpg" alt="Logo Ibad Ar Rahman Islamic Boarding School">
+          <span>Pelayanan Publik</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Buka navigasi">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#tentang">Tentang</a></li>
+            <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+            <li class="nav-item"><a class="btn btn-service rounded-pill px-4 ms-lg-2" href="index9.html">Lihat Layanan</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" id="tentang">
+        <div class="container hero-content">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-8">
+              <span class="eyebrow">Prototype informasi untuk masyarakat</span>
+              <h1>Pelayanan publik yang lebih mudah untuk semua.</h1>
+              <p>
+                Pelayanan publik membantu masyarakat mendapatkan informasi dan mengakses
+                berbagai informasi administrasi, pendidikan, kesehatan, dan fasilitas umum.
+                Halaman ini merupakan prototype umum, bukan portal resmi suatu instansi.
+              </p>
+              <div class="d-flex flex-wrap gap-3 mt-4">
+                <a class="btn btn-service btn-lg rounded-pill px-4" href="#layanan">Kenali layanan <i class="bi bi-arrow-down ms-2" aria-hidden="true"></i></a>
+                <a class="btn btn-outline-primary btn-lg rounded-pill px-4" href="index.html">Kembali ke beranda</a>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="hero-note">
+                <div class="hero-note-icon" aria-hidden="true"><i class="bi bi-people"></i></div>
+                <div>
+                  <strong>Untuk kebutuhan masyarakat</strong>
+                  <span>Informasi yang mudah dipahami dan diakses.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space" id="layanan">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Ruang lingkup</span>
+            <h2>Layanan yang dekat dengan kehidupan sehari-hari</h2>
+            <p>Pelayanan publik hadir dalam berbagai bentuk untuk mendukung kebutuhan warga.</p>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+              <article class="service-card">
+                <div class="service-icon" aria-hidden="true"><i class="bi bi-file-earmark-text"></i></div>
+                <h3>Administrasi</h3>
+                <p>Informasi dan layanan dokumen yang membantu keperluan masyarakat.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <article class="service-card">
+                <div class="service-icon" aria-hidden="true"><i class="bi bi-heart-pulse"></i></div>
+                <h3>Kesehatan</h3>
+                <p>Dukungan akses terhadap informasi dan fasilitas kesehatan.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <article class="service-card">
+                <div class="service-icon" aria-hidden="true"><i class="bi bi-mortarboard"></i></div>
+                <h3>Pendidikan</h3>
+                <p>Layanan yang menunjang kegiatan belajar dan kebutuhan pendidikan.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <article class="service-card">
+                <div class="service-icon" aria-hidden="true"><i class="bi bi-buildings"></i></div>
+                <h3>Fasilitas umum</h3>
+                <p>Informasi mengenai sarana dan fasilitas yang digunakan bersama.</p>
+              </article>
+            </div>
+          </div>
+          <div class="alert alert-light border mt-4 mb-0" role="note">
+            <strong>Jalur yang tersedia di prototype:</strong>
+            <a href="index7.html">panduan awal perizinan usaha</a>,
+            <a href="index2.html">demo alur pembuatan akun</a>, dan
+            <a href="index9.html#trackingForm">simulasi pelacakan tiket</a>.
+            Tidak ada permohonan yang dikirim ke instansi.
+          </div>
+        </div>
+      </section>
+
+      <section class="section-space principles" id="komitmen">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+              <span class="eyebrow">Komitmen pelayanan</span>
+              <h2 class="mt-2 fw-bold" style="color: var(--navy);">Pelayanan yang baik dimulai dari informasi yang jelas.</h2>
+              <p class="mt-3 mb-0" style="color: var(--muted);">
+                Masyarakat berhak memperoleh informasi layanan yang mudah dimengerti,
+                proses yang transparan, dan perlakuan yang adil.
+              </p>
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+              <div class="principle-item">
+                <i class="bi bi-eye" aria-hidden="true"></i>
+                <div><h3>Transparan</h3><p>Persyaratan dan tahapan layanan disampaikan dengan jelas.</p></div>
+              </div>
+              <div class="principle-item">
+                <i class="bi bi-universal-access" aria-hidden="true"></i>
+                <div><h3>Mudah diakses</h3><p>Informasi dirancang agar dapat dipahami oleh berbagai kalangan.</p></div>
+              </div>
+              <div class="principle-item">
+                <i class="bi bi-shield-check" aria-hidden="true"></i>
+                <div><h3>Bertanggung jawab</h3><p>Pelayanan mengutamakan kejelasan dan kepentingan masyarakat.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container py-5">
+        <div class="cta-panel d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-4">
+          <div>
+            <h2>Mulai dari informasi yang tepat.</h2>
+            <p>Jelajahi panduan prototype dan periksa persyaratan terbaru melalui kanal instansi resmi.</p>
+          </div>
+          <a class="btn btn-light btn-lg rounded-pill px-4 fw-semibold" href="index9.html">Jelajahi layanan <i class="bi bi-arrow-right ms-2" aria-hidden="true"></i></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container d-flex flex-column flex-sm-row justify-content-between gap-2">
+        <span>Prototype Portal Layanan Publik</span>
+        <span>Tidak mewakili instansi tertentu.</span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9hJ09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="site-animations.js"></script>
+  </body>
+</html>

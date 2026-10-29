@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#176b58">
+  <title>Demo Pendaftaran Akun — Kata Sandi | Portal Layanan Publik</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --success-color: #198754;
+      --border-color: #dee2e6;
+    }
+
+    body {
+      background-color: #f4f7fb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .form-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: none;
+      width: 100%;
+      max-width: 580px;
+      padding: 40px;
+    }
+
+    /* Header Logo Styling */
+    .brand-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .brand-logo {
+      width: min(220px, 75vw);
+      max-height: 90px;
+      margin-bottom: 12px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #103050;
+      margin-bottom: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-bottom: 0;
+    }
+
+    /* Stepper Wizard Styles */
+    .stepper-wrapper {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 35px;
+    }
+
+    .stepper-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background-color: var(--border-color);
+      z-index: 1;
+    }
+
+    .stepper-progress {
+      position: absolute;
+      top: 20px;
+      left: 10%;
+      height: 3px;
+      background-color: var(--success-color);
+      z-index: 2;
+      transition: width 0.4s ease;
+      width: 50%;
+    }
+
+    .step-item {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 33.33%;
+    }
+
+    .step-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #6c757d;
+      transition: all 0.3s ease;
+      margin-bottom: 8px;
+    }
+
+    .step-item.active .step-circle {
+      border-color: var(--success-color);
+      color: var(--success-color);
+      box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.15);
+    }
+
+    .step-item.completed .step-circle {
+      background-color: var(--success-color);
+      border-color: var(--success-color);
+      color: #ffffff;
+    }
+
+    .step-title {
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: #6c757d;
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+
+    .step-item.active .step-title,
+    .step-item.completed .step-title {
+      color: #212529;
+      font-weight: 700;
+    }
+
+    /* Form Controls Customization */
+    .form-label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .form-control, .form-select {
+      border-radius: 12px;
+      padding: 12px 16px;
+      border: 1.5px solid #ced4da;
+      font-size: 0.95rem;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    }
+
+    .input-group-text {
+      border-radius: 0 12px 12px 0;
+      cursor: pointer;
+      background: #f8f9fa;
+      border: 1.5px solid #ced4da;
+      border-left: none;
+    }
+
+    .btn-action {
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Requirements Checklist */
+    .requirement-badge {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background-color: #e9ecef;
+      color: #6c757d;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .requirement-badge.valid {
+      background-color: #d1e7dd;
+      color: #0f5132;
+    }
+
+    .step-pane {
+      display: none;
+    }
+
+    .step-pane.active {
+      display: block;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <link rel="stylesheet" href="site-animations.css">
+</head>
+<body>
+
+  <div class="form-card">
+    <!-- Identitas portal prototype -->
+    <div class="brand-header">
+      <a href="index.html" aria-label="Kembali ke beranda"><img src="logo%20ibad.jpg" alt="Logo Ibad Ar Rahman Islamic Boarding School" class="brand-logo"></a>
+      <h5 class="brand-title">PELAYANAN PUBLIK</h5>
+      <p class="brand-subtitle">Demo alur pembuatan kata sandi · Gunakan data contoh</p>
+    </div>
+
+    <!-- Stepper Navigation -->
+    <div class="stepper-wrapper">
+      <div class="stepper-progress" id="stepperProgress"></div>
+
+      <div class="step-item completed" id="stepItem1">
+        <div class="step-circle" id="stepNum1"><i class="bi bi-check-lg"></i></div>
+        <div class="step-title">Verifikasi<br>Data</div>
+      </div>
+
+      <div class="step-item active" id="stepItem2">
+        <div class="step-circle" id="stepNum2">2</div>
+        <div class="step-title">Kata<br>Sandi</div>
+      </div>
+
+      <div class="step-item" id="stepItem3">
+        <div class="step-circle" id="stepNum3">3</div>
+        <div class="step-title">Profil<br>Pelaku Usaha</div>
+      </div>
+    </div>
+
+    <!-- STEP 2: KATA SANDI (AKTIF) -->
+    <form id="passwordForm">
+      <div class="step-pane active" id="stepPane2">
+        <!-- Input Kata Sandi -->
+        <div class="mb-3">
+          <label class="form-label">Kata Sandi Baru</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="passwordInput" style="border-right: none;" placeholder="Masukkan kata sandi baru" required>
+            <span class="input-group-text" id="togglePassword">
+              <i class="bi bi-eye" id="iconPassword"></i>
+            </span>
+          </div>
+
+          <!-- Progress Bar Kekuatan Sandi -->
+          <div class="progress mt-2" style="height: 6px;">
+            <div class="progress-bar" id="strengthBar" role="progressbar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Indikator Syarat Sandi -->
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="requirement-badge" id="reqMin8"><i class="bi bi-circle"></i> Minimal 8 karakter</span>
+          <span class="requirement-badge" id="reqUpperLower"><i class="bi bi-circle"></i> Huruf besar & kecil</span>
+          <span class="requirement-badge" id="reqNumber"><i class="bi bi-circle"></i> Mengandung angka</span>
+        </div>
+
+        <!-- Input Konfirmasi Kata Sandi -->
+        <div class="mb-4">
+          <label class="form-label">Konfirmasi Kata Sandi</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="confirmPasswordInput" style="border-right: none;" placeholder="Masukkan ulang kata sandi" required>
+            <span class="input-group-text" id="toggleConfirmPassword">
+              <i class="bi bi-eye" id="iconConfirmPassword"></i>
+            </span>
+          </div>
+          <div id="matchFeedback" class="form-text mt-1"></div>
+        </div>
+
+        <!-- Tombol Aksi -->
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-outline-secondary w-50 btn-action"          onclick="window.location.href='index2.html'">Kembali</button>
+          <button type="button" class="btn btn-primary w-50 btn-action" id="btnStep2Next"   onclick="window.location.href='index5.html'">Lanjut</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script Validasi & Interaksi Kata Sandi -->
+  <script>
+    const passwordInput = document.getElementById('passwordInput');
+    const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+    const strengthBar = document.getElementById('strengthBar');
+    const btnStep2Next = document.getElementById('btnStep2Next');
+    const matchFeedback = document.getElementById('matchFeedback');
+
+    const reqMin8 = document.getElementById('reqMin8');
+    const reqUpperLower = document.getElementById('reqUpperLower');
+    const reqNumber = document.getElementById('reqNumber');
+
+    function checkPassword() {
+      const val = passwordInput.value;
+      const confirmVal = confirmPasswordInput.value;
+
+      const isMin8 = val.length >= 8;
+      const hasUpperLower = /[a-z]/.test(val) && /[A-Z]/.test(val);
+      const hasNumber = /[0-9]/.test(val);
+
+      // Update Badges UI
+      updateBadge(reqMin8, isMin8);
+      updateBadge(reqUpperLower, hasUpperLower);
+      updateBadge(reqNumber, hasNumber);
+
+      // Kekuatan Kata Sandi
+      let score = 0;
+      if (isMin8) score++;
+      if (hasUpperLower) score++;
+      if (hasNumber) score++;
+
+      if (score === 0) {
+        strengthBar.style.width = '0%';
+        strengthBar.className = 'progress-bar';
+      } else if (score === 1) {
+        strengthBar.style.width = '33%';
+        strengthBar.className = 'progress-bar bg-danger';
+      } else if (score === 2) {
+        strengthBar.style.width = '66%';
+        strengthBar.className = 'progress-bar bg-warning';
+      } else if (score === 3) {
+        strengthBar.style.width = '100%';
+        strengthBar.className = 'progress-bar bg-success';
+      }
+
+      // Cek Kesesuaian Kata Sandi
+      let isMatch = false;
+      if (confirmVal.length > 0) {
+        if (val === confirmVal) {
+          matchFeedback.textContent = '✓ Kata sandi cocok';
+          matchFeedback.className = 'form-text text-success fw-semibold';
+          isMatch = true;
+        } else {
+          matchFeedback.textContent = '✕ Kata sandi tidak cocok';
+          matchFeedback.className = 'form-text text-danger fw-semibold';
+          isMatch = false;
+        }
+      } else {
+        matchFeedback.textContent = '';
+      }
+
+      // Aktifkan Tombol Lanjut Jika Semua Syarat Terpenuhi
+      if (isMin8 && hasUpperLower && hasNumber && isMatch) {
+        btnStep2Next.removeAttribute('disabled');
+      } else {
+        btnStep2Next.setAttribute('disabled', 'true');
+      }
+    }
+
+    function updateBadge(element, isValid) {
+      if (isValid) {
+        element.classList.add('valid');
+        element.querySelector('i').className = 'bi bi-check-circle-fill';
+      } else {
+        element.classList.remove('valid');
+        element.querySelector('i').className = 'bi bi-circle';
+      }
+    }
+
+    passwordInput.addEventListener('input', checkPassword);
+    confirmPasswordInput.addEventListener('input', checkPassword);
+
+    // Toggle Tampilkan / Sembunyikan Kata Sandi
+    function setupTogglePassword(toggleId, inputId, iconId) {
+      document.getElementById(toggleId).addEventListener('click', () => {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.className = 'bi bi-eye-slash';
+        } else {
+          input.type = 'password';
+          icon.className = 'bi bi-eye';
+        }
+      });
+    }
+
+    setupTogglePassword('togglePassword', 'passwordInput', 'iconPassword');
+    setupTogglePassword('toggleConfirmPassword', 'confirmPasswordInput', 'iconConfirmPassword');
+  </script>
+  <script src="site-animations.js"></script>
+</body>
+</html>

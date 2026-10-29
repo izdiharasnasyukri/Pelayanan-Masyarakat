@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#176b58">
+  <title>Demo Pendaftaran Akun | Portal Layanan Publik</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-primary: #0f2c59;      /* Navy Islami Modern */
+      --brand-primary-hover: #0a2042;
+      --brand-accent: #1a5d1a;       /* Emerald Green */
+      --brand-accent-light: #e8f5e9;
+      --bg-surface: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+
+    .form-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px -15px rgba(15, 44, 89, 0.08), 0 0 1px rgba(15, 44, 89, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      width: 100%;
+      max-width: 560px;
+      padding: 40px;
+      transition: all 0.3s ease;
+    }
+
+    /* Header Logo & Title */
+    .brand-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .brand-logo {
+      width: min(220px, 75vw);
+      max-height: 90px;
+      margin-bottom: 16px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Stepper Navigation */
+    .stepper-wrapper {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 32px;
+      padding: 0 10px;
+    }
+
+    .stepper-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background-color: var(--border-color);
+      z-index: 1;
+    }
+
+    .stepper-progress {
+      position: absolute;
+      top: 20px;
+      left: 15%;
+      height: 2px;
+      background-color: var(--brand-accent);
+      z-index: 2;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+    }
+
+    .step-item {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 33.33%;
+    }
+
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+      margin-bottom: 8px;
+    }
+
+    .step-item.active .step-circle {
+      border-color: var(--brand-accent);
+      color: var(--brand-accent);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 4px rgba(26, 93, 26, 0.12);
+    }
+
+    .step-item.completed .step-circle {
+      background-color: var(--brand-accent);
+      border-color: var(--brand-accent);
+      color: #ffffff;
+    }
+
+    .step-title {
+      font-size: 0.775rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .step-item.active .step-title,
+    .step-item.completed .step-title {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    /* Form Controls Customization */
+    .form-label {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      font-size: 0.875rem;
+    }
+
+    .form-control, .form-select {
+      border-radius: 10px;
+      padding: 10px 14px;
+      border: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: var(--text-main);
+      background-color: #ffffff;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(15, 44, 89, 0.12);
+    }
+
+    .input-group-text {
+      border-radius: 0 10px 10px 0;
+      cursor: pointer;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-left: none;
+      color: var(--text-muted);
+    }
+
+    .btn-action {
+      border-radius: 10px;
+      padding: 11px 20px;
+      font-weight: 600;
+      font-size: 0.925rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--brand-primary);
+      border-color: var(--brand-primary);
+      color: #ffffff;
+    }
+
+    .btn-primary-custom:hover {
+      background-color: var(--brand-primary-hover);
+      border-color: var(--brand-primary-hover);
+      color: #ffffff;
+    }
+
+    .btn-success-custom {
+      background-color: var(--brand-accent);
+      border-color: var(--brand-accent);
+      color: #ffffff;
+    }
+
+    .btn-success-custom:hover {
+      background-color: #144714;
+      border-color: #144714;
+      color: #ffffff;
+    }
+
+    /* Requirements Badge */
+    .requirement-badge {
+      font-size: 0.775rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background-color: #f1f5f9;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .requirement-badge.valid {
+      background-color: var(--brand-accent-light);
+      color: var(--brand-accent);
+      font-weight: 600;
+    }
+
+    .step-pane {
+      display: none;
+    }
+
+    .step-pane.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 576px) {
+      .form-card {
+        padding: 24px 20px;
+        border-radius: 16px;
+      }
+      .step-title {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="site-animations.css">
+</head>
+<body>
+
+  <div class="form-card">
+    <!-- Identitas portal prototype -->
+    <div class="brand-header">
+      <a href="index.html" aria-label="Kembali ke beranda"><img src="logo%20ibad.jpg" alt="Logo Ibad Ar Rahman Islamic Boarding School" class="brand-logo"></a>
+      <h5 class="brand-title">PORTAL LAYANAN PUBLIK</h5>
+      <p class="brand-subtitle">Demo alur pembuatan akun pelaku usaha</p>
+    </div>
+    <div class="alert alert-warning small" role="note">
+      <strong>Prototype demo:</strong> jangan masukkan NIK, kata sandi, nomor telepon, atau data pribadi yang sebenarnya. Data tidak dikirim ke instansi.
+    </div>
+
+    <!-- Stepper Navigation -->
+    <div class="stepper-wrapper">
+      <div class="stepper-progress" id="stepperProgress"></div>
+
+      <div class="step-item active" id="stepItem1">
+        <div class="step-circle" id="stepNum1">1</div>
+        <div class="step-title">Verifikasi<br>Data</div>
+      </div>
+
+      <div class="step-item" id="stepItem2">
+        <div class="step-circle" id="stepNum2">2</div>
+        <div class="step-title">Kata<br>Sandi</div>
+      </div>
+
+      <div class="step-item" id="stepItem3">
+        <div class="step-circle" id="stepNum3">3</div>
+        <div class="step-title">Profil<br>Usaha</div>
+      </div>
+    </div>
+
+    <!-- Multi-step Form -->
+    <form id="registrationForm" novalidate>
+
+      <!-- STEP 1: VERIFIKASI DATA -->
+      <div class="step-pane active" id="stepPane1">
+        <div class="mb-3">
+          <label class="form-label" for="jenisUsaha">Jenis Pelaku Usaha</label>
+          <select class="form-select" id="jenisUsaha" required>
+            <option value="" selected disabled>Pilih jenis pelaku usaha</option>
+            <option value="Perorangan">Perorangan</option>
+            <option value="Badan Usaha">Badan Usaha (PT/CV/Firma)</option>
+            <option value="UMKM">UMKM / Mikro</option>
+          </select>
+          <div class="invalid-feedback">Pilih jenis pelaku usaha.</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="nikInput">NIK contoh (simulasi saja)</label>
+          <input type="text" class="form-control" id="nikInput" maxlength="16" placeholder="Gunakan angka contoh, misalnya 0000000000000000" inputmode="numeric" required>
+          <div class="invalid-feedback">NIK harus terdiri dari 16 digit angka.</div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label" for="emailInput">Alamat Email</label>
+          <input type="email" class="form-control" id="emailInput" placeholder="nama@email.com" required>
+          <div class="invalid-feedback">Masukkan email yang valid.</div>
+        </div>
+
+        <button type="button" class="btn btn-primary-custom w-100 btn-action" id="btnStep1Next">
+          Verifikasi & Lanjut <i class="bi bi-arrow-right ms-1"></i>
+        </button>
+      </div>
+
+      <!-- STEP 2: KATA SANDI -->
+      <div class="step-pane" id="stepPane2">
+        <div class="mb-3">
+          <label class="form-label" for="passwordInput">Kata Sandi Baru</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="passwordInput" placeholder="Buat kata sandi" required>
+            <span class="input-group-text" id="togglePassword">
+              <i class="bi bi-eye" id="iconPassword"></i>
+            </span>
+          </div>
+          
+          <div class="progress mt-2" style="height: 4px;">
+            <div class="progress-bar" id="strengthBar" role="progressbar" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="requirement-badge" id="reqMin8"><i class="bi bi-circle"></i> Min. 8 Karakter</span>
+          <span class="requirement-badge" id="reqUpperLower"><i class="bi bi-circle"></i> Huruf Besar & Kecil</span>
+          <span class="requirement-badge" id="reqNumber"><i class="bi bi-circle"></i> Mengandung Angka</span>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label" for="confirmPasswordInput">Konfirmasi Kata Sandi</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="confirmPasswordInput" placeholder="Ulangi kata sandi" required>
+            <span class="input-group-text" id="toggleConfirmPassword">
+              <i class="bi bi-eye" id="iconConfirmPassword"></i>
+            </span>
+          </div>
+          <div id="matchFeedback" class="form-text mt-1"></div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-outline-secondary w-50 btn-action" id="btnStep2Prev">Kembali</button>
+          <button type="button" class="btn btn-primary-custom w-50 btn-action" id="btnStep2Next" disabled>Lanjut</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: PROFIL PELAKU USAHA -->
+      <div class="step-pane" id="stepPane3">
+        <div class="mb-3">
+          <label class="form-label" for="namaUsaha">Nama Usaha / Bisnis</label>
+          <input type="text" class="form-control" id="namaUsaha" placeholder="Nama brand atau usaha Anda" required>
+          <div class="invalid-feedback">Nama usaha wajib diisi.</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="noHp">Nomor WhatsApp / Telepon</label>
+          <input type="tel" class="form-control" id="noHp" placeholder="Contoh: 081234567890" required>
+          <div class="invalid-feedback">Nomor telepon/WA wajib diisi.</div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="alamatUsaha">Alamat Lengkap Usaha</label>
+          <textarea class="form-control" id="alamatUsaha" rows="2" placeholder="Jalan, RT/RW, Kecamatan, Kota" required></textarea>
+          <div class="invalid-feedback">Alamat usaha wajib diisi.</div>
+        </div>
+
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="agreeCheck" required>
+          <label class="form-check-label small text-muted" for="agreeCheck">
+            Saya menyetujui bahwa data yang digunakan hanya data contoh dan telah membaca <a href="ketentuan.html" class="text-decoration-none">Ketentuan & Privasi Prototype</a>.
+          </label>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-outline-secondary w-50 btn-action" id="btnStep3Prev">Kembali</button>
+          <button type="submit" class="btn btn-success-custom w-50 btn-action" id="btnSubmit">Selesai & Daftar</button>
+        </div>
+      </div>
+
+      <!-- STEP SUKSES -->
+      <div class="step-pane text-center py-3" id="stepPaneSuccess">
+        <div class="mb-3 text-success">
+          <i class="bi bi-check-circle-fill" style="font-size: 3.5rem; color: var(--brand-accent);"></i>
+        </div>
+        <h4 class="fw-bold mb-2" style="color: var(--brand-primary);">Demo Selesai</h4>
+        <p class="text-muted small mb-4">Alur prototype selesai dicoba. Tidak ada akun yang didaftarkan atau data yang dikirim ke sistem layanan.</p>
+        <button type="button" class="btn btn-primary-custom btn-action px-4" onclick="window.location.href='index.html'">
+          Kembali ke Beranda
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    let currentStep = 1;
+
+    const stepPane1 = document.getElementById('stepPane1');
+    const stepPane2 = document.getElementById('stepPane2');
+    const stepPane3 = document.getElementById('stepPane3');
+    const stepPaneSuccess = document.getElementById('stepPaneSuccess');
+
+    const stepItem1 = document.getElementById('stepItem1');
+    const stepItem2 = document.getElementById('stepItem2');
+    const stepItem3 = document.getElementById('stepItem3');
+
+    const stepNum1 = document.getElementById('stepNum1');
+    const stepNum2 = document.getElementById('stepNum2');
+    const stepNum3 = document.getElementById('stepNum3');
+    const stepperProgress = document.getElementById('stepperProgress');
+
+    function updateStepper(step) {
+      currentStep = step;
+
+      [stepItem1, stepItem2, stepItem3].forEach(item => item.classList.remove('active', 'completed'));
+
+      if (step === 1) {
+        stepItem1.classList.add('active');
+        stepperProgress.style.width = '0%';
+        stepNum1.innerHTML = '1';
+        stepNum2.innerHTML = '2';
+      } else if (step === 2) {
+        stepItem1.classList.add('completed');
+        stepItem2.classList.add('active');
+        stepperProgress.style.width = '50%';
+        stepNum1.innerHTML = '<i class="bi bi-check-lg"></i>';
+        stepNum2.innerHTML = '2';
+      } else if (step === 3) {
+        stepItem1.classList.add('completed');
+        stepItem2.classList.add('completed');
+        stepItem3.classList.add('active');
+        stepperProgress.style.width = '100%';
+        stepNum1.innerHTML = '<i class="bi bi-check-lg"></i>';
+        stepNum2.innerHTML = '<i class="bi bi-check-lg"></i>';
+        stepNum3.innerHTML = '3';
+      } else if (step === 4) {
+        stepItem1.classList.add('completed');
+        stepItem2.classList.add('completed');
+        stepItem3.classList.add('completed');
+        stepNum3.innerHTML = '<i class="bi bi-check-lg"></i>';
+      }
+
+      [stepPane1, stepPane2, stepPane3, stepPaneSuccess].forEach(pane => pane.classList.remove('active'));
+      if (step === 1) stepPane1.classList.add('active');
+      if (step === 2) stepPane2.classList.add('active');
+      if (step === 3) stepPane3.classList.add('active');
+      if (step === 4) stepPaneSuccess.classList.add('active');
+    }
+
+    // Step 1 Validation
+    document.getElementById('btnStep1Next').addEventListener('click', () => {
+      const jenisUsaha = document.getElementById('jenisUsaha');
+      const nik = document.getElementById('nikInput');
+      const email = document.getElementById('emailInput');
+
+      let isValid = true;
+
+      if (!jenisUsaha.value) {
+        jenisUsaha.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        jenisUsaha.classList.remove('is-invalid');
+      }
+
+      if (nik.value.trim().length !== 16 || isNaN(nik.value.trim())) {
+        nik.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        nik.classList.remove('is-invalid');
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value.trim())) {
+        email.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        email.classList.remove('is-invalid');
+      }
+
+      if (isValid) {
+        updateStepper(2);
+      }
+    });
+
+    // Step 2 Password Check
+    const passwordInput = document.getElementById('passwordInput');
+    const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+    const strengthBar = document.getElementById('strengthBar');
+    const btnStep2Next = document.getElementById('btnStep2Next');
+    const matchFeedback = document.getElementById('matchFeedback');
+
+    const reqMin8 = document.getElementById('reqMin8');
+    const reqUpperLower = document.getElementById('reqUpperLower');
+    const reqNumber = document.getElementById('reqNumber');
+
+    function checkPassword() {
+      const val = passwordInput.value;
+      const confirmVal = confirmPasswordInput.value;
+
+      const isMin8 = val.length >= 8;
+      const hasUpperLower = /[a-z]/.test(val) && /[A-Z]/.test(val);
+      const hasNumber = /[0-9]/.test(val);
+
+      updateBadge(reqMin8, isMin8);
+      updateBadge(reqUpperLower, hasUpperLower);
+      updateBadge(reqNumber, hasNumber);
+
+      let score = 0;
+      if (isMin8) score++;
+      if (hasUpperLower) score++;
+      if (hasNumber) score++;
+
+      if (score === 0) {
+        strengthBar.style.width = '0%';
+        strengthBar.className = 'progress-bar';
+      } else if (score === 1) {
+        strengthBar.style.width = '33%';
+        strengthBar.className = 'progress-bar bg-danger';
+      } else if (score === 2) {
+        strengthBar.style.width = '66%';
+        strengthBar.className = 'progress-bar bg-warning';
+      } else if (score === 3) {
+        strengthBar.style.width = '100%';
+        strengthBar.className = 'progress-bar bg-success';
+      }
+
+      let isMatch = false;
+      if (confirmVal.length > 0) {
+        if (val === confirmVal) {
+          matchFeedback.textContent = 'Kata sandi cocok';
+          matchFeedback.className = 'form-text text-success small fw-semibold';
+          isMatch = true;
+        } else {
+          matchFeedback.textContent = 'Kata sandi tidak cocok';
+          matchFeedback.className = 'form-text text-danger small';
+          isMatch = false;
+        }
+      } else {
+        matchFeedback.textContent = '';
+      }
+
+      if (isMin8 && hasUpperLower && hasNumber && isMatch) {
+        btnStep2Next.removeAttribute('disabled');
+      } else {
+        btnStep2Next.setAttribute('disabled', 'true');
+      }
+    }
+
+    function updateBadge(element, isValid) {
+      if (isValid) {
+        element.classList.add('valid');
+        element.querySelector('i').className = 'bi bi-check-circle-fill';
+      } else {
+        element.classList.remove('valid');
+        element.querySelector('i').className = 'bi bi-circle';
+      }
+    }
+
+    passwordInput.addEventListener('input', checkPassword);
+    confirmPasswordInput.addEventListener('input', checkPassword);
+
+    // Toggle Password Visibility
+    function setupTogglePassword(toggleId, inputId, iconId) {
+      document.getElementById(toggleId).addEventListener('click', () => {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+          input.type = 'text';
+          icon.className = 'bi bi-eye-slash';
+        } else {
+          input.type = 'password';
+          icon.className = 'bi bi-eye';
+        }
+      });
+    }
+
+    setupTogglePassword('togglePassword', 'passwordInput', 'iconPassword');
+    setupTogglePassword('toggleConfirmPassword', 'confirmPasswordInput', 'iconConfirmPassword');
+
+    // Navigation Buttons
+    document.getElementById('btnStep2Prev').addEventListener('click', () => updateStepper(1));
+    document.getElementById('btnStep2Next').addEventListener('click', () => updateStepper(3));
+    document.getElementById('btnStep3Prev').addEventListener('click', () => updateStepper(2));
+
+    // Submit Form Step 3
+    document.getElementById('registrationForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const namaUsaha = document.getElementById('namaUsaha');
+      const noHp = document.getElementById('noHp');
+      const alamatUsaha = document.getElementById('alamatUsaha');
+      const agree = document.getElementById('agreeCheck');
+
+      let isValidStep3 = true;
+
+      if (!namaUsaha.value.trim()) {
+        namaUsaha.classList.add('is-invalid');
+        isValidStep3 = false;
+      } else {
+        namaUsaha.classList.remove('is-invalid');
+      }
+
+      if (!noHp.value.trim()) {
+        noHp.classList.add('is-invalid');
+        isValidStep3 = false;
+      } else {
+        noHp.classList.remove('is-invalid');
+      }
+
+      if (!alamatUsaha.value.trim()) {
+        alamatUsaha.classList.add('is-invalid');
+        isValidStep3 = false;
+      } else {
+        alamatUsaha.classList.remove('is-invalid');
+      }
+
+      if (!agree.checked) {
+        agree.classList.add('is-invalid');
+        isValidStep3 = false;
+      } else {
+        agree.classList.remove('is-invalid');
+      }
+
+      if (isValidStep3) {
+        const email = document.getElementById('emailInput').value.trim();
+        localStorage.setItem('emailPengguna', email);
+        updateStepper(4);
+      }
+    });
+  </script>
+  <script src="site-animations.js"></script>
+</body>
+</html>

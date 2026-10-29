@@ -1,0 +1,2665 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pelayanan Masyarakat - Pesantren Ibad Ar-Rahman</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.css" integrity="sha512-vWHsp0PuTxwRMLtGTnbS7PDNtI7yFmmiFq24hjcqpup/KK7ixxWdXwRmerG9gu7peaSRIVxpFcfBSVrGzWcF4w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Custom Styles -->
+    <style>
+      :root {
+        --color-ink: #18352f;
+        --color-green: #176b58;
+        --color-green-dark: #104b40;
+        --color-mint: #e7f1eb;
+        --color-gold: #d5aa5a;
+        --color-paper: #f7f8f3;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--color-paper);
+        color: #344740;
+        overflow-x: hidden;
+      }
+      body::before {
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 3px;
+        content: "";
+        background: linear-gradient(90deg, var(--color-green), var(--color-gold));
+        transform: scaleX(var(--scroll-progress, 0));
+        transform-origin: left;
+        pointer-events: none;
+      }
+      ::selection {
+        color: #fff;
+        background: var(--color-green);
+      }
+      .navbar {
+        z-index: 1030;
+        backdrop-filter: blur(16px);
+        background-color: rgba(255, 255, 255, 0.9) !important;
+        transition: box-shadow 0.3s ease, background-color 0.3s ease;
+      }
+      .navbar.is-scrolled {
+        background-color: rgba(255, 255, 255, 0.97) !important;
+        box-shadow: 0 8px 28px rgba(24, 53, 47, 0.1) !important;
+      }
+      .navbar-toggler {
+        transition: transform 0.25s ease, background-color 0.25s ease;
+      }
+      .navbar-toggler:hover {
+        background-color: var(--color-mint);
+        transform: rotate(-4deg);
+      }
+      .navbar .container {
+        column-gap: 1.25rem;
+      }
+      .navbar-brand {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .navbar-collapse {
+        align-items: center;
+      }
+      .navbar-nav {
+        gap: 0.15rem;
+      }
+      .navbar .nav-link {
+        padding: 0.65rem 0.7rem;
+        border-radius: 0.65rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      .navbar .nav-link:hover,
+      .navbar .nav-link.active {
+        background-color: rgba(23, 107, 88, 0.07);
+      }
+      .navbar .nav-link:not(.dropdown-toggle)::after {
+        right: 0.7rem;
+        bottom: 0.35rem;
+        left: 0.7rem;
+      }
+      .navbar .dropdown-menu {
+        min-width: 13rem;
+        margin-top: 0.45rem;
+        padding: 0.45rem;
+        border: 1px solid rgba(24, 53, 47, 0.08);
+        border-radius: 0.9rem;
+        box-shadow: 0 12px 30px rgba(24, 53, 47, 0.13);
+      }
+      @media (min-width: 992px) {
+        .navbar .dropdown:hover > .dropdown-menu,
+        .navbar .dropdown:focus-within > .dropdown-menu {
+          display: block;
+        }
+      }
+      .navbar .dropdown-item {
+        padding: 0.6rem 0.75rem;
+        border-radius: 0.55rem;
+        color: #53645d;
+        font-size: 0.9rem;
+      }
+      .navbar .dropdown-item:hover,
+      .navbar .dropdown-item:focus {
+        background-color: var(--color-mint);
+        color: var(--color-green-dark);
+      }
+      #tombolAkun {
+        flex-shrink: 0;
+      }
+      #tombolAkun .btn {
+        white-space: nowrap;
+      }
+      .accessibility-controls {
+        flex-shrink: 0;
+      }
+      .navbar-brand img,
+      footer img {
+        box-shadow: 0 0 0 3px rgba(213, 170, 90, 0.32);
+        transition: transform 0.35s ease;
+      }
+      .navbar-brand:hover img {
+        transform: rotate(-8deg) scale(1.08);
+      }
+      .nav-link {
+        position: relative;
+        color: #53645d;
+        transition: color 0.25s ease;
+      }
+      .nav-link:not(.dropdown-toggle)::after {
+        position: absolute;
+        right: 0.5rem;
+        bottom: 0.2rem;
+        left: 0.5rem;
+        height: 2px;
+        content: "";
+        background: var(--color-gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+      }
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--color-green) !important;
+      }
+      .nav-link:not(.dropdown-toggle):hover::after,
+      .nav-link:not(.dropdown-toggle).active::after {
+        transform: scaleX(1);
+      }
+      .hero-section {
+        position: relative;
+        isolation: isolate;
+        min-height: 68vh;
+        overflow: hidden;
+        background:
+          linear-gradient(112deg, rgba(11, 48, 41, 0.89), rgba(17, 83, 67, 0.72) 58%, rgba(27, 64, 52, 0.55)),
+          url('pelayanan publik.jpg') center 48% / cover;
+        display: flex;
+        align-items: center;
+      }
+      .hero-section::before,
+      .hero-section::after {
+        position: absolute;
+        z-index: -1;
+        content: "";
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero-section::before {
+        top: -13rem;
+        right: -5rem;
+        width: 34rem;
+        height: 34rem;
+        box-shadow: 0 0 0 3rem rgba(255, 255, 255, 0.035), 0 0 0 6rem rgba(255, 255, 255, 0.025);
+        animation: orbit 24s linear infinite;
+      }
+      .hero-section::after {
+        bottom: -19rem;
+        left: -7rem;
+        width: 31rem;
+        height: 31rem;
+        background: rgba(213, 170, 90, 0.12);
+        filter: blur(1px);
+      }
+      .hero-section .container {
+        animation: hero-arrive 0.9s both;
+      }
+      .hero-section .badge {
+        color: #f6e5bd !important;
+        background: rgba(255, 255, 255, 0.12) !important;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(10px);
+        animation: badge-glow 3.2s ease-in-out 1.1s infinite;
+      }
+      .hero-section h1 {
+        text-wrap: balance;
+        text-shadow: 0 3px 24px rgba(0, 0, 0, 0.2);
+      }
+      .hero-section .lead {
+        max-width: 48rem;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .typing-text.is-typing::after {
+        display: inline-block;
+        width: 2px;
+        height: 0.9em;
+        margin-left: 0.12em;
+        background-color: currentColor;
+        content: "";
+        vertical-align: -0.08em;
+        animation: typing-cursor 0.8s steps(1) infinite;
+      }
+      .floating-illustration {
+        animation: illustration-float 5s ease-in-out infinite;
+      }
+      section.container {
+        position: relative;
+      }
+      section.container > .bg-white,
+      section.container > .p-4.bg-white,
+      section.container > .p-4.p-md-5.bg-white {
+        border-color: rgba(24, 53, 47, 0.08) !important;
+        box-shadow: 0 14px 44px rgba(28, 57, 46, 0.06) !important;
+      }
+      section.container h2.fw-bold {
+        width: fit-content;
+      }
+      section.container h2.fw-bold::after {
+        display: block;
+        width: 2.6rem;
+        height: 3px;
+        margin-top: 0.6rem;
+        content: "";
+        background: var(--color-gold);
+        border-radius: 99px;
+        transition: width 0.35s ease;
+      }
+      section.container h2.fw-bold:hover::after {
+        width: 4.2rem;
+      }
+      .card {
+        background-color: #fff;
+        box-shadow: 0 10px 32px rgba(28, 57, 46, 0.07) !important;
+      }
+      .service-icon {
+        display: grid;
+        width: 3rem;
+        height: 3rem;
+        place-items: center;
+        color: var(--color-green);
+        background-color: var(--color-mint);
+        border-radius: 1rem;
+        font-size: 1.35rem;
+      }
+      .tracking-panel {
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border: 1px solid rgba(24, 53, 47, 0.1);
+        border-radius: 1.25rem;
+        background: #fff;
+        box-shadow: 0 14px 40px rgba(28, 57, 46, 0.07);
+      }
+      .tracking-panel .form-control {
+        min-height: 2.9rem;
+        border-color: #dce5df;
+      }
+      .tracking-panel .form-control:focus,
+      .tracking-panel .form-select:focus {
+        border-color: var(--color-green);
+        box-shadow: 0 0 0 0.2rem rgba(23, 107, 88, 0.13);
+      }
+      .tracking-panel .form-label {
+        color: #40574f;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .tracking-panel .form-text {
+        color: #6b7a73;
+      }
+      .tracking-card {
+        height: 100%;
+        padding: 1.4rem;
+        border: 1px solid rgba(24, 53, 47, 0.1);
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 8px 28px rgba(28, 57, 46, 0.055);
+      }
+      .tracking-card h3 {
+        color: var(--color-ink);
+        font-size: 1.15rem;
+        font-weight: 700;
+      }
+      .resident-notice {
+        min-height: 2rem;
+        color: #61736b;
+        font-size: 0.875rem;
+      }
+      .resident-notice.is-error {
+        color: #a74d43;
+      }
+      .resident-notice.is-success {
+        color: var(--color-green-dark);
+      }
+      .tracking-result {
+        border: 1px solid rgba(23, 107, 88, 0.14);
+        border-radius: 0.85rem;
+        background: #f3f8f4;
+      }
+      .tracking-result[hidden] {
+        display: none !important;
+      }
+      .evidence-preview {
+        display: block;
+        width: min(100%, 22rem);
+        max-height: 16rem;
+        margin-top: 0.75rem;
+        border: 1px solid #dfe8e2;
+        border-radius: 0.75rem;
+        background: #f8faf8;
+        object-fit: contain;
+      }
+      .evidence-preview[hidden] {
+        display: none !important;
+      }
+      .performance-dashboard {
+        padding: clamp(1.25rem, 3vw, 1.75rem);
+        border: 1px solid rgba(24, 53, 47, 0.09);
+        border-radius: 1.25rem;
+        background: #fff;
+        box-shadow: 0 14px 44px rgba(28, 57, 46, 0.06);
+      }
+      .performance-stat {
+        height: 100%;
+        padding: 1rem;
+        border: 1px solid #e1eae4;
+        border-radius: 0.9rem;
+        background: #fbfcfa;
+      }
+      .performance-stat-value {
+        display: block;
+        color: #145548;
+        font-size: clamp(1.55rem, 3vw, 2rem);
+        font-weight: 750;
+        letter-spacing: -0.045em;
+        line-height: 1.15;
+      }
+      .performance-stat-label {
+        display: block;
+        margin-top: 0.4rem;
+        color: #687970;
+        font-size: 0.85rem;
+      }
+      .performance-chart {
+        display: flex;
+        min-height: 11rem;
+        align-items: stretch;
+        gap: clamp(0.6rem, 2vw, 1.25rem);
+        padding: 1rem 0 0;
+        border-bottom: 1px solid #dfe8e2;
+        background: repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent calc(25% - 1px),
+          #edf1ee calc(25% - 1px),
+          #edf1ee 25%
+        );
+      }
+      .performance-chart-item {
+        display: flex;
+        min-width: 0;
+        flex: 1;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .performance-chart-value {
+        color: #155b4d;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+      .performance-chart-bar {
+        display: flex;
+        width: min(100%, 3.5rem);
+        min-height: 1.5rem;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 0.45rem;
+        border-radius: 0.55rem 0.55rem 0 0;
+        background: linear-gradient(180deg, #36987f, #176b58);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 700;
+      }
+      .performance-chart-month {
+        min-height: 1.5rem;
+        color: #687970;
+        font-size: 0.72rem;
+        text-align: center;
+      }
+      .transparency-note {
+        height: 100%;
+        padding: 1rem;
+        border: 1px solid #dfe5e9;
+        border-radius: 0.85rem;
+        background: #f8f9fa;
+      }
+      .transparency-note h3 {
+        color: #354a43;
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+      .transparency-note p {
+        color: #687782;
+        font-size: 0.85rem;
+      }
+      .card-hover {
+        transition: transform 0.35s cubic-bezier(0.2, 0.75, 0.25, 1), box-shadow 0.35s ease;
+      }
+      .card-hover.p-3 {
+        overflow: hidden;
+      }
+      .card-hover:hover {
+        transform: translateY(-8px);
+        box-shadow:
+          0 20px 42px rgba(28, 57, 46, 0.14),
+          0 0 0 1px rgba(213, 170, 90, 0.34),
+          0 0 24px rgba(213, 170, 90, 0.24) !important;
+      }
+      .card-hover img {
+        transition: transform 0.55s cubic-bezier(0.2, 0.75, 0.25, 1);
+      }
+      .card-hover:hover img {
+        transform: scale(1.045);
+      }
+      .btn {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, color 0.22s ease, background-color 0.22s ease;
+      }
+      .btn::before {
+        position: absolute;
+        z-index: -1;
+        top: -50%;
+        bottom: -50%;
+        left: -65%;
+        width: 35%;
+        content: "";
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+        transform: skewX(-20deg);
+        transition: left 0.55s ease;
+        pointer-events: none;
+      }
+      .btn:hover::before {
+        left: 135%;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn:active {
+        transform: translateY(0) scale(0.98);
+      }
+      .btn-primary {
+        color: #fff;
+        background-color: var(--color-green);
+        border-color: var(--color-green);
+        box-shadow: 0 6px 18px rgba(23, 107, 88, 0.2);
+      }
+      .btn-primary:hover,
+      .btn-primary:focus {
+        color: #fff;
+        background-color: var(--color-green-dark);
+        border-color: var(--color-green-dark);
+        box-shadow: 0 10px 24px rgba(23, 107, 88, 0.3);
+      }
+      .btn-outline-primary {
+        color: var(--color-green);
+        border-color: var(--color-green);
+      }
+      .btn-outline-primary:hover {
+        color: #fff;
+        background-color: var(--color-green);
+        border-color: var(--color-green);
+      }
+      .btn-outline-light:hover {
+        color: var(--color-ink);
+        background-color: #fff;
+      }
+      .text-theme {
+        color: var(--color-green);
+      }
+      .text-danger {
+        color: #a74d43 !important;
+      }
+      .bg-danger-subtle {
+        background-color: #faeeeb !important;
+      }
+      .bg-primary-subtle {
+        color: var(--color-green) !important;
+        background-color: var(--color-mint) !important;
+      }
+      footer {
+        background: linear-gradient(135deg, #143f36, #0d302a) !important;
+      }
+      footer a {
+        transition: color 0.2s ease, padding-left 0.2s ease;
+      }
+      footer a:hover {
+        color: #f1d18d !important;
+        padding-left: 3px;
+      }
+      footer img:hover {
+        transform: rotate(6deg) scale(1.06);
+      }
+      .card video {
+        transition: filter 0.35s ease;
+      }
+      .card:hover video {
+        filter: saturate(1.12);
+      }
+      .video-gallery-column {
+        transition: flex-basis 0.4s ease, max-width 0.4s ease;
+      }
+      .video-gallery-column.is-playing {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .video-card.is-playing,
+      .video-card.is-playing:hover {
+        z-index: 2;
+        transform: translateY(-3px) scale(1.012);
+        box-shadow: 0 22px 48px rgba(16, 75, 64, 0.2) !important;
+      }
+      .video-player {
+        display: block;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+      .card-body h3,
+      .card-body h5,
+      .card h6 {
+        transition: color 0.25s ease;
+      }
+      .card a:hover .card-body h3,
+      .card a:hover .card-body h5,
+      .card a:hover h6 {
+        color: var(--color-green) !important;
+      }
+      .card .bi,
+      footer .bi {
+        display: inline-block;
+        transition: transform 0.25s ease;
+      }
+      a:hover .bi-arrow-right {
+        transform: translateX(4px);
+      }
+      .back-to-top {
+        position: fixed;
+        z-index: 1041;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        display: grid;
+        width: 3rem;
+        height: 3rem;
+        place-items: center;
+        color: #fff;
+        background: var(--color-green);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 50%;
+        box-shadow: 0 8px 24px rgba(16, 75, 64, 0.28);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+      }
+      .back-to-top.is-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .back-to-top:hover {
+        color: #fff;
+        background: var(--color-green-dark);
+        transform: translateY(-3px);
+      }
+      .back-to-top .bi {
+        transition: transform 0.25s ease;
+      }
+      .back-to-top:hover .bi {
+        transform: translateY(-2px);
+      }
+      :focus-visible {
+        outline: 3px solid var(--color-gold);
+        outline-offset: 3px;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.75, 0.25, 1);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @keyframes hero-arrive {
+        from { opacity: 0; transform: translateY(18px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes orbit {
+        to { transform: rotate(360deg); }
+      }
+      @keyframes badge-glow {
+        0%, 100% { box-shadow: 0 0 0 rgba(213, 170, 90, 0); }
+        50% { box-shadow: 0 0 20px rgba(213, 170, 90, 0.22); }
+      }
+      @keyframes illustration-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes typing-cursor {
+        50% { opacity: 0; }
+      }
+      @media (max-width: 575.98px) {
+        .hero-section {
+          min-height: 72vh;
+          background-position: 58% center;
+        }
+        .hero-section h1 {
+          font-size: clamp(2rem, 9vw, 3rem);
+        }
+        .back-to-top {
+          right: 1rem;
+          bottom: 1rem;
+        }
+      }
+      @media (max-width: 767.98px) {
+        .video-card.is-playing .video-player {
+          aspect-ratio: 4 / 3;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .ai-widget-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 1040;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #176b58, #104b40);
+  color: #fff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(16, 75, 64, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.ai-widget-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+.ai-chat-box {
+  position: fixed;
+  bottom: 5.5rem;
+  left: 1.5rem;
+  z-index: 1040;
+  width: min(90vw, 360px);
+  max-height: 480px;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  border: 1px solid rgba(23, 107, 88, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.ai-chat-box[hidden] {
+  display: none !important;
+}
+.ai-chat-header {
+  background: linear-gradient(135deg, #176b58, #104b40);
+  color: #fff;
+  padding: 1rem;
+}
+.ai-chat-body {
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 320px;
+  background: #f8faf8;
+}
+.chat-msg {
+  margin-bottom: 0.75rem;
+  max-width: 85%;
+  padding: 0.6rem 0.85rem;
+  border-radius: 0.85rem;
+  font-size: 0.825rem;
+  line-height: 1.4;
+}
+.chat-msg.bot {
+  background: #ffffff;
+  color: #18352f;
+  border: 1px solid #e2ece6;
+  border-bottom-left-radius: 0.2rem;
+}
+.chat-msg.user {
+  background: #176b58;
+  color: #ffffff;
+  margin-left: auto;
+  border-bottom-right-radius: 0.2rem;
+}
+      .accessibility-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem;
+      }
+      .accessibility-controls .btn {
+        white-space: nowrap;
+      }
+      .faq-search {
+        max-width: 42rem;
+        margin: 0 auto 1.5rem;
+      }
+      .faq-list {
+        max-width: 52rem;
+        margin: 0 auto;
+      }
+      .faq-item {
+        margin-bottom: 0.75rem;
+        overflow: hidden;
+        border: 1px solid rgba(24, 53, 47, 0.1);
+        border-radius: 0.85rem;
+        background: #fff;
+      }
+      .faq-item summary {
+        padding: 1rem 1.15rem;
+        color: var(--color-ink);
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .faq-item p {
+        margin: 0;
+        padding: 0 1.15rem 1rem;
+        color: #64746d;
+      }
+      .emergency-toggle {
+        position: fixed;
+        z-index: 1040;
+        right: 1.5rem;
+        bottom: 5.25rem;
+        display: grid;
+        width: 3.25rem;
+        height: 3.25rem;
+        place-items: center;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: #b42318;
+        box-shadow: 0 8px 24px rgba(80, 20, 15, 0.3);
+        color: #fff;
+        font-size: 1.35rem;
+        transform-origin: 50% 15%;
+        animation:
+          emergency-ring 5s ease-in-out infinite,
+          emergency-pulse 5s ease-out infinite;
+      }
+      .emergency-toggle:hover,
+      .emergency-toggle:focus-visible,
+      .emergency-toggle[aria-expanded="true"] {
+        animation-play-state: paused;
+      }
+      .emergency-toggle:hover,
+      .emergency-toggle[aria-expanded="true"] {
+        background: #8f1c13;
+        color: #fff;
+      }
+      @keyframes emergency-ring {
+        0%, 20%, 100% { transform: rotate(0); }
+        2%, 6%, 10%, 14% { transform: rotate(-12deg); }
+        4%, 8%, 12%, 16% { transform: rotate(12deg); }
+        18% { transform: rotate(0); }
+      }
+      @keyframes emergency-pulse {
+        0% {
+          box-shadow:
+            0 8px 24px rgba(80, 20, 15, 0.3),
+            0 0 0 2px rgba(180, 35, 24, 0.95),
+            0 0 0 0 rgba(180, 35, 24, 0.75);
+        }
+        20% {
+          box-shadow:
+            0 8px 24px rgba(80, 20, 15, 0.3),
+            0 0 0 2px rgba(180, 35, 24, 0),
+            0 0 0 18px rgba(180, 35, 24, 0);
+        }
+        100% {
+          box-shadow:
+            0 8px 24px rgba(80, 20, 15, 0.3),
+            0 0 0 2px rgba(180, 35, 24, 0),
+            0 0 0 18px rgba(180, 35, 24, 0);
+        }
+      }
+      .emergency-panel {
+        position: fixed;
+        z-index: 1040;
+        right: 1.5rem;
+        bottom: 9rem;
+        width: min(22rem, calc(100vw - 2rem));
+        padding: 1rem;
+        border: 1px solid #ead6d4;
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 12px 35px rgba(30, 40, 35, 0.2);
+      }
+      .emergency-panel[hidden] {
+        display: none !important;
+      }
+      .emergency-panel a {
+        color: #a21d16;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .emergency-panel a:hover,
+      .emergency-panel a:focus-visible {
+        text-decoration: underline;
+      }
+      html[data-theme="dark"] body {
+        background-color: #111b18;
+        color: #e2e9e4;
+      }
+      html[data-theme="dark"] .navbar,
+      html[data-theme="dark"] .navbar.is-scrolled {
+        background-color: rgba(24, 37, 32, 0.96) !important;
+        border-color: #35473f !important;
+      }
+      html[data-theme="dark"] .navbar-brand,
+      html[data-theme="dark"] .nav-link,
+      html[data-theme="dark"] .card,
+      html[data-theme="dark"] .tracking-card,
+      html[data-theme="dark"] .performance-dashboard,
+      html[data-theme="dark"] .faq-item,
+      html[data-theme="dark"] .emergency-panel {
+        color: #e2e9e4 !important;
+      }
+      html[data-theme="dark"] .navbar .dropdown-menu {
+        border-color: #35473f;
+        background-color: #1b2924;
+      }
+      html[data-theme="dark"] .navbar .dropdown-item {
+        color: #d0dbd4;
+      }
+      html[data-theme="dark"] .navbar .dropdown-item:hover,
+      html[data-theme="dark"] .navbar .dropdown-item:focus,
+      html[data-theme="dark"] .navbar .nav-link:hover,
+      html[data-theme="dark"] .navbar .nav-link.active {
+        background-color: #263a32;
+        color: #95cfb5 !important;
+      }
+      html[data-theme="dark"] .card,
+      html[data-theme="dark"] .tracking-card,
+      html[data-theme="dark"] .performance-dashboard,
+      html[data-theme="dark"] .faq-item,
+      html[data-theme="dark"] .emergency-panel {
+        border-color: #35473f !important;
+        background-color: #1b2924 !important;
+      }
+      html[data-theme="dark"] .bg-white,
+      html[data-theme="dark"] .bg-light,
+      html[data-theme="dark"] .performance-stat,
+      html[data-theme="dark"] .transparency-note,
+      html[data-theme="dark"] .tracking-result,
+      html[data-theme="dark"] .ai-chat-box,
+      html[data-theme="dark"] .ai-chat-body {
+        border-color: #35473f !important;
+        background-color: #1b2924 !important;
+        color: #e2e9e4 !important;
+      }
+      html[data-theme="dark"] .text-dark,
+      html[data-theme="dark"] .text-secondary,
+      html[data-theme="dark"] .faq-item summary,
+      html[data-theme="dark"] .transparency-note h3,
+      html[data-theme="dark"] .tracking-card h3 {
+        color: #e2e9e4 !important;
+      }
+      html[data-theme="dark"] .text-muted,
+      html[data-theme="dark"] .faq-item p,
+      html[data-theme="dark"] .performance-stat-label,
+      html[data-theme="dark"] .transparency-note p {
+        color: #b3c1b9 !important;
+      }
+      html[data-theme="dark"] .form-control,
+      html[data-theme="dark"] .form-select {
+        border-color: #46594f;
+        background-color: #17231f;
+        color: #e2e9e4;
+      }
+      html[data-theme="dark"] .form-control::placeholder {
+        color: #9eafa5;
+      }
+      html[data-theme="dark"] .btn-outline-primary {
+        color: #95cfb5;
+        border-color: #6ba88d;
+      }
+      html[data-theme="dark"] .btn-outline-primary:hover {
+        color: #10251c;
+        background-color: #95cfb5;
+      }
+      html[data-theme="dark"] .ai-chat-box {
+        border-color: #35473f;
+      }
+      html[data-theme="dark"] .chat-msg.bot {
+        border-color: #35473f;
+        background: #23332d;
+        color: #e2e9e4;
+      }
+      @media (max-width: 1199.98px) and (min-width: 992px) {
+        .navbar .container {
+          column-gap: 0.65rem;
+        }
+        .navbar .nav-link {
+          padding-right: 0.45rem;
+          padding-left: 0.45rem;
+          font-size: 0.84rem;
+        }
+        .accessibility-controls {
+          gap: 0.25rem;
+        }
+        .accessibility-controls #tombolTema {
+          padding-right: 0.55rem;
+          padding-left: 0.55rem;
+        }
+      }
+      @media (max-width: 991.98px) {
+        .navbar .container {
+          row-gap: 0.25rem;
+        }
+        .navbar-collapse {
+          flex-basis: 100%;
+          padding: 0.75rem 0 0.25rem;
+        }
+        .navbar-nav {
+          align-items: stretch;
+          margin-bottom: 0 !important;
+        }
+        .navbar .nav-link {
+          padding: 0.55rem 0.75rem;
+        }
+        .navbar .nav-link::after {
+          display: none;
+        }
+        .navbar .dropdown-menu {
+          margin: 0.15rem 0 0.5rem;
+          border: 0;
+          background-color: rgba(23, 107, 88, 0.045);
+          box-shadow: none;
+        }
+        #tombolAkun {
+          padding-top: 0.75rem;
+        }
+        .accessibility-controls {
+          margin-top: 0.75rem !important;
+          padding-top: 0.75rem;
+          border-top: 1px solid rgba(24, 53, 47, 0.12);
+        }
+        html[data-theme="dark"] .navbar .dropdown-menu {
+          background-color: rgba(149, 207, 181, 0.06);
+        }
+        html[data-theme="dark"] .accessibility-controls {
+          border-color: #35473f;
+        }
+      }
+      @media (max-width: 575.98px) {
+        .emergency-toggle {
+          right: 1rem;
+          bottom: 5rem;
+        }
+        .emergency-panel {
+          right: 1rem;
+          bottom: 8.75rem;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="site-experience.css">
+  </head>
+  <body>
+
+    <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top border-bottom shadow-sm">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="https://ibadarrahman.sch.id/">
+          <img src="logo ibad.jpg" alt="Logo Ibad Ar-Rahman" class="rounded-circle" style="height: 40px; width: 40px; object-fit: cover;">
+          <span class="fw-bold fs-6 text-dark">Ibad Ar-Rahman</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Buka menu navigasi">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-2">
+            <li class="nav-item">
+              <a class="nav-link fw-medium active" href="#">Beranda</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fw-medium" href="#" id="menuLayanan" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Layanan
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="menuLayanan">
+                <li><a class="dropdown-item" href="#data-layanan">Data Layanan</a></li>
+                <li><a class="dropdown-item" href="#pelacakan-layanan">Lacak Layanan</a></li>
+                <li><a class="dropdown-item" href="#layanan-warga">Layanan Warga</a></li>
+                <li><a class="dropdown-item" href="#faq">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fw-medium" href="#" id="menuInformasi" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Informasi
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="menuInformasi">
+                <li><a class="dropdown-item" href="index4.html">Informasi Umum</a></li>
+                <li><a class="dropdown-item" href="#berita-terkini">Berita & Video</a></li>
+                <li><a class="dropdown-item" href="#faq">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div id="tombolAkun" class="d-flex align-items-center gap-2">
+            <a href="index2.html" class="btn btn-primary btn-sm px-3 rounded-pill">Daftar</a>
+            <a href="index6.html" class="btn btn-outline-primary btn-sm px-3 rounded-pill">
+              <i class="bi bi-person-fill me-1"></i> Login
+            </a>
+          </div>
+          <div class="accessibility-controls ms-lg-3 mt-3 mt-lg-0" aria-label="Pengaturan tampilan">
+            <button class="btn btn-outline-primary btn-sm rounded-pill" type="button" id="tombolTema" aria-pressed="false">
+              <i class="bi bi-moon-stars" aria-hidden="true"></i>
+              <span id="labelTombolTema">Mode gelap</span>
+            </button>
+            <button class="btn btn-outline-primary btn-sm rounded-pill" type="button" id="tombolAudioUi" aria-pressed="false" title="Aktifkan atau nonaktifkan efek suara">
+              <i class="bi bi-volume-mute" aria-hidden="true"></i>
+              <span id="labelAudioUi">Suara mati</span>
+            </button>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Ukuran teks">
+              <button class="btn btn-outline-primary" type="button" id="kurangiUkuranTeks" aria-label="Perkecil ukuran teks" title="Perkecil teks">A−</button>
+              <button class="btn btn-outline-primary" type="button" id="tambahUkuranTeks" aria-label="Perbesar ukuran teks" title="Perbesar teks">A+</button>
+            </div>
+            <span class="visually-hidden" id="statusUkuranTeks" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center position-relative py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9 col-xl-8">
+            <span class="badge bg-white text-dark px-3 py-2 rounded-pill fw-medium mb-3 shadow-sm">Prototype Informasi Layanan Publik</span>
+            <h1 class="display-5 fw-bold mb-3">
+              <span class="typing-text" aria-hidden="true">Selamat Datang di Pelayanan Publik</span>
+              <span class="visually-hidden">Selamat Datang di Pelayanan Publik</span>
+            </h1>
+            <p class="lead fw-normal text-white-50 mb-4 px-md-4">
+              Dapatkan pelayanan publik terbaik, transparan, dan berkualitas tinggi serta fasilitas memadai untuk mendukung seluruh kebutuhan masyarakat.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+              <a href="index2.html" class="btn btn-primary btn-lg px-4 rounded-pill shadow">Daftar Sekarang</a>
+              <a href="#pelacakan-layanan" class="btn btn-outline-light btn-lg px-4 rounded-pill">Lacak Layanan</a>
+              <a href="index4.html" class="btn btn-outline-light btn-lg px-4 rounded-pill">Pelajari Lebih Lanjut</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Section: Tentang -->
+    <section class="container py-5">
+      <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border">
+        <div class="row align-items-center g-4">
+          <div class="col-md-5 text-center">
+            <img src="images (10).jpg" class="img-fluid rounded-4 shadow-sm floating-illustration" alt="Ilustrasi Pelayanan">
+          </div>
+          <div class="col-md-7">
+            <h2 class="fw-bold text-theme mb-3">Apa Itu Pelayanan Publik?</h2>
+            <p class="text-secondary leading-relaxed mb-3">
+              Pelayanan publik adalah kegiatan atau rangkaian kegiatan dalam rangka pemenuhan kebutuhan pelayanan bagi setiap warga negara, baik berupa pelayanan administrasi, kesehatan, pendidikan, maupun fasilitas umum lainnya.
+            </p>
+            <div class="p-3 bg-light rounded-3 border-start border-4 border-danger">
+              <p class="mb-0 text-dark small fw-medium">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                Prototype ini menyajikan informasi layanan secara ringkas dan tidak terhubung ke sistem instansi.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Layanan warga: laporan lokal dan pelacakan simulasi -->
+    <section class="container py-4" id="layanan-warga" aria-labelledby="judul-layanan-warga">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+        <div>
+          <span class="badge rounded-pill bg-primary-subtle text-theme mb-2">Ruang layanan</span>
+          <h2 class="fw-bold fs-3 mb-1" id="judul-layanan-warga">Layanan Warga</h2>
+          <p class="text-muted mb-0">Buat laporan simulasi atau cek contoh status layanan.</p>
+        </div>
+        <span class="badge rounded-pill bg-light text-theme border px-3 py-2">
+          <i class="bi bi-info-circle me-1" aria-hidden="true"></i>
+          Prototype lokal · bukan layanan resmi
+        </span>
+      </div>
+
+      <div class="tracking-panel" id="pelacakan-layanan">
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="tracking-card">
+              <h3 class="mb-2">Laporkan masalah di sekitar Anda</h3>
+              <p class="text-muted small mb-4">
+                Laporan disimpan hanya di browser perangkat ini. Jangan masukkan nama, nomor telepon, alamat rumah, atau data pribadi lainnya.
+                Lokasi umum bersifat opsional.
+              </p>
+
+              <form id="laporanWargaForm">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label" for="kategoriMasalah">Kategori masalah</label>
+                    <select class="form-select" id="kategoriMasalah" name="kategori" required>
+                      <option value="" selected disabled>Pilih kategori</option>
+                      <option value="Jalan dan transportasi">Jalan dan transportasi</option>
+                      <option value="Kebersihan lingkungan">Kebersihan lingkungan</option>
+                      <option value="Fasilitas umum">Fasilitas umum</option>
+                      <option value="Penerangan jalan">Penerangan jalan</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label" for="areaUmum">Area umum</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="areaUmum"
+                      name="area"
+                      maxlength="80"
+                      autocomplete="off"
+                      placeholder="Contoh: sekitar Taman Kota"
+                    >
+                    <button class="btn btn-sm btn-outline-primary rounded-pill mt-2" type="button" id="gunakanLokasi">
+                      <i class="bi bi-geo-alt me-1" aria-hidden="true"></i>Gunakan Lokasi Perangkat
+                    </button>
+                    <div class="form-text" id="petunjukLokasi">
+                      Opsional. Browser akan meminta izin lokasi; area umum bisa diisi manual.
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="deskripsiMasalah">Deskripsi masalah</label>
+                    <textarea
+                      class="form-control"
+                      id="deskripsiMasalah"
+                      name="deskripsi"
+                      rows="4"
+                      maxlength="500"
+                      placeholder="Jelaskan masalah secara singkat tanpa menyertakan data pribadi."
+                      required
+                    ></textarea>
+                    <div class="form-text text-end"><span id="jumlahKarakter">0</span>/500 karakter</div>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label" for="fotoBukti">Foto bukti (opsional)</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="fotoBukti"
+                      name="fotoBukti"
+                      accept="image/jpeg,image/png,image/webp"
+                      aria-describedby="petunjukFotoBukti"
+                    >
+                    <div class="form-text" id="petunjukFotoBukti">
+                      Pilih foto JPG, PNG, atau format gambar lain, maksimal 1 MB. File hanya disimpan di browser ini dan tidak diunggah.
+                    </div>
+                    <img class="evidence-preview" id="pratinjauFotoBukti" alt="Pratinjau foto bukti yang dipilih" hidden>
+                    <span class="form-text d-block" id="namaFotoBukti" aria-live="polite"></span>
+                  </div>
+                  <div class="col-12 d-flex flex-column flex-sm-row align-items-sm-center gap-3">
+                    <button class="btn btn-primary rounded-pill px-4" type="submit">
+                      Buat laporan simulasi <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+                    </button>
+                    <span class="resident-notice mb-0" id="pesanLaporan" aria-live="polite"></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="tracking-card">
+              <h3 class="mb-2">Pelacakan status layanan</h3>
+              <p class="text-muted small mb-4">
+                Masukkan kode laporan yang dibuat di perangkat ini, atau coba kode contoh DEMO-1042 dan DEMO-2087.
+              </p>
+              <form id="pelacakanForm">
+                <label class="form-label" for="kodePelacakan">Kode pelacakan</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="kodePelacakan"
+                    name="kodePelacakan"
+                    maxlength="20"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="Contoh: DEMO-1042"
+                    aria-describedby="petunjukPelacakan"
+                    required
+                  >
+                  <button class="btn btn-outline-primary" type="submit">Cek</button>
+                </div>
+                <div class="form-text" id="petunjukPelacakan">Laporan Anda tersimpan hanya di browser ini; kode contoh bukan data layanan nyata.</div>
+              </form>
+
+              <div class="tracking-result p-3 mt-3" id="hasilPelacakan" role="status" aria-live="polite" hidden>
+                <div class="d-flex align-items-start justify-content-between gap-2">
+                  <span class="badge bg-primary-subtle text-theme mb-2" id="statusPelacakan">Status simulasi</span>
+                  <button class="btn-close" type="button" id="tutupHasilPelacakan" aria-label="Tutup hasil pelacakan"></button>
+                </div>
+                <p class="small fw-semibold mb-2">Tahapan laporan simulasi</p>
+                <ol class="tracking-timeline" id="timelinePelacakan" aria-label="Tahapan laporan simulasi">
+                  <li data-status-step="Diterima"><span class="timeline-dot" aria-hidden="true"></span><span>Diterima</span></li>
+                  <li data-status-step="Verifikasi"><span class="timeline-dot" aria-hidden="true"></span><span>Verifikasi</span></li>
+                  <li data-status-step="Dalam Proses"><span class="timeline-dot" aria-hidden="true"></span><span>Dalam Proses</span></li>
+                  <li data-status-step="Selesai"><span class="timeline-dot" aria-hidden="true"></span><span>Selesai</span></li>
+                </ol>
+                <h4 class="h6 fw-bold mb-2" id="hasilKategori"></h4>
+                <p class="small mb-1">Kode: <strong id="hasilKodePelacakan"></strong></p>
+                <p class="small mb-1" id="hasilArea" hidden></p>
+                <p class="small mb-2" id="hasilDeskripsi"></p>
+                <p class="small mb-1" id="hasilNamaFoto" hidden></p>
+                <img class="evidence-preview" id="hasilFotoBukti" alt="Foto bukti laporan" hidden>
+                <p class="small text-muted mb-0" id="hasilWaktu"></p>
+              </div>
+
+              <p class="resident-notice mt-3 mb-0" id="pesanPelacakan" aria-live="polite"></p>
+              <button class="btn btn-sm btn-link text-danger text-decoration-none px-0 mt-2" type="button" id="hapusLaporan">
+                Hapus semua laporan simulasi dari perangkat ini
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data layanan publik -->
+    <section class="container py-4" id="data-layanan" aria-labelledby="judul-data-layanan">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+        <div>
+          <span class="badge rounded-pill bg-primary-subtle text-theme mb-2">Informasi untuk warga</span>
+          <h2 class="fw-bold fs-3 mb-1" id="judul-data-layanan">Data Layanan Publik</h2>
+          <p class="text-muted mb-0">Kenali kelompok layanan yang umum dibutuhkan masyarakat.</p>
+        </div>
+        <a href="index4.html#layanan" class="btn btn-outline-primary rounded-pill px-4">
+          Lihat informasi lengkap <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="performance-dashboard">
+        <div class="d-flex flex-column flex-md-row justify-content-between gap-2 mb-3">
+          <div>
+            <h3 class="h5 fw-bold mb-1">Ringkasan kinerja layanan</h3>
+            <p class="small text-muted mb-0">Periode contoh: Juli–Oktober 2026 · Dataset ilustratif, bukan data pemerintah.</p>
+          </div>
+          <span class="small text-muted align-self-md-center">Sumber: data simulasi prototype</span>
+        </div>
+
+        <div class="row g-3 mb-4" aria-label="Indikator simulasi kinerja layanan">
+          <div class="col-6 col-lg-3">
+            <div class="performance-stat">
+              <strong class="performance-stat-value" data-count="1284">1.284</strong>
+              <span class="performance-stat-label">Permohonan diterima</span>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="performance-stat">
+              <strong class="performance-stat-value" data-count="1096">1.096</strong>
+              <span class="performance-stat-label">Permohonan selesai</span>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="performance-stat">
+              <strong class="performance-stat-value" data-count="4.2" data-decimals="1" data-suffix=" hari">4,2 hari</strong>
+              <span class="performance-stat-label">Rata-rata waktu penyelesaian</span>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="performance-stat">
+              <strong class="performance-stat-value" data-count="86" data-suffix="%">86%</strong>
+              <span class="performance-stat-label">Penyelesaian sesuai target</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 align-items-end">
+          <div class="col-lg-7">
+            <h3 class="h6 fw-bold mb-2">Permohonan selesai per bulan</h3>
+            <svg class="performance-chart-svg" viewBox="0 0 560 250" role="img" aria-labelledby="grafikLayananJudul grafikLayananDeskripsi">
+              <title id="grafikLayananJudul">Permohonan selesai per bulan</title>
+              <desc id="grafikLayananDeskripsi">Grafik data ilustratif: Juli 210, Agustus 248, September 286, dan Oktober 352 permohonan.</desc>
+              <defs>
+                <linearGradient id="serviceChartGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#36987f"></stop>
+                  <stop offset="100%" stop-color="#176b58"></stop>
+                </linearGradient>
+              </defs>
+              <g class="chart-grid" aria-hidden="true">
+                <line x1="52" y1="50" x2="540" y2="50"></line>
+                <line x1="52" y1="85" x2="540" y2="85"></line>
+                <line x1="52" y1="120" x2="540" y2="120"></line>
+                <line x1="52" y1="155" x2="540" y2="155"></line>
+                <line x1="52" y1="190" x2="540" y2="190"></line>
+              </g>
+              <g class="chart-axis-labels" aria-hidden="true">
+                <text x="42" y="194">0</text>
+                <text x="42" y="159">100</text>
+                <text x="42" y="124">200</text>
+                <text x="42" y="89">300</text>
+                <text x="42" y="54">400</text>
+              </g>
+              <g class="chart-bar" data-chart-bar>
+                <rect x="95" y="116.5" width="56" height="73.5" rx="8" fill="url(#serviceChartGradient)"></rect>
+                <text x="123" y="107">210</text>
+                <text class="chart-month" x="123" y="220">Juli</text>
+              </g>
+              <g class="chart-bar" data-chart-bar>
+                <rect x="213" y="103.2" width="56" height="86.8" rx="8" fill="url(#serviceChartGradient)"></rect>
+                <text x="241" y="94">248</text>
+                <text class="chart-month" x="241" y="220">Agustus</text>
+              </g>
+              <g class="chart-bar" data-chart-bar>
+                <rect x="331" y="89.9" width="56" height="100.1" rx="8" fill="url(#serviceChartGradient)"></rect>
+                <text x="359" y="81">286</text>
+                <text class="chart-month" x="359" y="220">September</text>
+              </g>
+              <g class="chart-bar" data-chart-bar>
+                <rect x="449" y="66.8" width="56" height="123.2" rx="8" fill="url(#serviceChartGradient)"></rect>
+                <text x="477" y="58">352</text>
+                <text class="chart-month" x="477" y="220">Oktober</text>
+              </g>
+            </svg>
+            <p class="small text-muted mt-2 mb-0">Jumlah pada grafik adalah contoh untuk demonstrasi visualisasi.</p>
+          </div>
+          <div class="col-lg-5">
+            <aside class="transparency-note" aria-labelledby="judul-transparansi">
+              <h3 id="judul-transparansi">Catatan transparansi</h3>
+              <p class="mb-2">Dashboard ini belum terhubung ke API atau sumber data instansi. Angka tidak diperbarui otomatis dan tidak mewakili kinerja daerah tertentu.</p>
+              <p class="mb-0">Pada implementasi resmi, cantumkan dataset, periode, definisi indikator, waktu pembaruan, serta tautan unduh data.</p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Akses layanan warga -->
+    <section class="container py-4" id="layanan-publik" aria-labelledby="judul-layanan-publik">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+        <div>
+          <span class="badge rounded-pill bg-primary-subtle text-theme mb-2">Akses cepat</span>
+          <h2 class="fw-bold fs-3 mb-1" id="judul-layanan-publik">Jelajahi Layanan Publik</h2>
+          <p class="text-muted mb-0">Pilih panduan atau simulasi sesuai kebutuhan Anda.</p>
+        </div>
+        <a href="index9.html" class="btn btn-outline-primary rounded-pill px-4">
+          Buka semua layanan <i class="bi bi-arrow-right ms-1" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4" data-service-item>
+          <article class="card card-hover border-0 rounded-4 h-100 p-4">
+            <div class="service-icon mb-3" aria-hidden="true"><i class="bi bi-info-circle"></i></div>
+            <h3 class="h5 fw-bold">Informasi layanan</h3>
+            <p class="text-muted small">Pelajari ruang lingkup dan prinsip pelayanan publik.</p>
+            <a href="index4.html" class="btn btn-outline-primary rounded-pill mt-auto align-self-start">Lihat informasi</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4" data-service-item>
+          <article class="card card-hover border-0 rounded-4 h-100 p-4">
+            <div class="service-icon mb-3" aria-hidden="true"><i class="bi bi-person-plus"></i></div>
+            <h3 class="h5 fw-bold">Pendaftaran akun</h3>
+            <p class="text-muted small">Lihat contoh alur pembuatan akun menggunakan data contoh.</p>
+            <a href="index2.html" class="btn btn-outline-primary rounded-pill mt-auto align-self-start">Buka demo akun</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4" data-service-item>
+          <article class="card card-hover border-0 rounded-4 h-100 p-4">
+            <div class="service-icon mb-3" aria-hidden="true"><i class="bi bi-clipboard-check"></i></div>
+            <h3 class="h5 fw-bold">Panduan perizinan usaha</h3>
+            <p class="text-muted small">Cek panduan persiapan awal dan gambaran klasifikasi risiko.</p>
+            <a href="index7.html" class="btn btn-outline-primary rounded-pill mt-auto align-self-start">Buka panduan</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4" data-service-item>
+          <article class="card card-hover border-0 rounded-4 h-100 p-4">
+            <div class="service-icon mb-3" aria-hidden="true"><i class="bi bi-shop"></i></div>
+            <h3 class="h5 fw-bold">Persiapan data usaha</h3>
+            <p class="text-muted small">Pelajari contoh informasi yang perlu disiapkan sebelum mengurus izin.</p>
+            <a href="index8.html" class="btn btn-outline-primary rounded-pill mt-auto align-self-start">Lihat persiapan</a>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4" data-service-item>
+          <article class="card card-hover border-0 rounded-4 h-100 p-4">
+            <div class="service-icon mb-3" aria-hidden="true"><i class="bi bi-ticket-perforated"></i></div>
+            <h3 class="h5 fw-bold">Simulasi status tiket</h3>
+            <p class="text-muted small">Lihat contoh tampilan status tiket; bukan pelacakan pengaduan sungguhan.</p>
+            <a href="#pelacakan-layanan" class="btn btn-outline-primary rounded-pill mt-auto align-self-start">Buka pelacakan</a>
+          </article>
+        </div>
+      </div>
+      <p class="small text-muted mt-3 mb-0">
+        <i class="bi bi-shield-check me-1" aria-hidden="true"></i>
+        Semua formulir dan alur di halaman ini adalah prototype; jangan masukkan data pribadi atau kata sandi yang sebenarnya.
+      </p>
+    </section>
+
+    <!-- Section: Check Perizinan Usaha -->
+    <section class="container mb-5">
+      <div class="p-4 p-md-5 bg-white border border-light-subtle rounded-4 shadow-sm position-relative overflow-hidden">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <h3 class="fw-bold text-dark fs-4 mb-2">
+              Klasifikasi Perizinan Berbasis Risiko
+            </h3>
+            <p class="text-muted mb-0">
+              Sistem mengelompokkan usaha ke dalam 4 tingkat risiko untuk menentukan jenis perizinan dan kewajiban yang harus dipenuhi oleh pelaku usaha.
+            </p>
+          </div>
+          <div class="col-lg-4 text-lg-end text-center">
+            <a href="index7.html" class="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold">
+              Cek Izin Usaha <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Berita Terbaru -->
+    <section class="container py-4" id="berita-terkini">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="fw-bold fs-3 mb-0">Berita Terkini</h2>
+          <p class="text-muted small mb-0">Informasi seputar pelayanan publik terbaru</p>
+        </div>
+        <a href="https://www.detik.com/tag/pelayanan-publik" target="_blank" class="text-decoration-none fw-semibold text-theme">
+          Lihat Semua <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Grid Berita Utama -->
+      <div class="row g-4">
+        <div class="col-md-6">
+          <article class="card border-0 shadow-sm rounded-4 h-100 card-hover overflow-hidden">
+            <a href="https://aceh.tribunnews.com/nanggroe/1049844/dampak-kabut-asap-terhadap-kesehatan-pelayanan-publik-bupati-abdya-minta-opd-lakukan-langkah-ini" class="text-decoration-none text-dark">
+              <img src="safaruddin-18102026-100kb1.jpg" class="card-img-top" alt="Berita Kabut Asap" style="height: 240px; object-fit: cover;">
+              <div class="card-body p-4">
+                <span class="badge bg-danger-subtle text-danger mb-2">Kesehatan</span>
+                <h3 class="h5 fw-bold mb-3">Dampak Kabut Asap Terhadap Kesehatan & Pelayanan Publik, Bupati Abdya Minta OPD Lakukan Langkah Ini</h3>
+                <p class="text-muted small mb-0"><i class="bi bi-calendar3 me-1"></i> Senin, 19 Oktober 2026</p>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <div class="col-md-6">
+          <article class="card border-0 shadow-sm rounded-4 h-100 card-hover overflow-hidden">
+            <a href="https://news.detik.com/berita/d-8716506/asdp-pantau-kondisi-penumpang-kmp-batumandi-terbakar-fasilitasi-pemulangan" class="text-decoration-none text-dark">
+              <img src="../pt-asdp-indonesia-ferry-pantau-kondisi-penumpang-kmp-batumandi-yang-terbakar-1792519996714_169.jpeg" class="card-img-top" alt="Berita ASDP" style="height: 240px; object-fit: cover;">
+              <div class="card-body p-4">
+                <span class="badge bg-primary-subtle text-primary mb-2">Penghargaan</span>
+                <h3 class="h5 fw-bold mb-3">PT ASDP Indonesia Ferry (Persero) Raih Penghargaan BUMN Terbaik 2026 dari Kementerian BUMN</h3>
+                <p class="text-muted small mb-0"><i class="bi bi-calendar3 me-1"></i> Senin, 19 Oktober 2026</p>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+
+      <!-- List Berita Sampingan -->
+      <div class="row g-3 mt-3">
+        <div class="col-lg-4 col-md-6">
+          <article class="card border-0 shadow-sm rounded-4 p-3 card-hover bg-white">
+            <div class="d-flex gap-3 align-items-center">
+              <img src="orang ngantri bensin.jpeg" class="rounded-3" alt="Thumbnail" style="width: 85px; height: 85px; object-fit: cover;">
+              <div>
+                <a href="https://www.detik.com/bali/bisnis/d-8712780/pantau-antrean-bbm-bupati-karangasem-bagi-bagi-kupon-pertalite" class="text-decoration-none text-dark">
+                  <h6 class="fw-bold mb-1 fs-6">Pantau Antrean BBM, Bupati Karangasem Bagi-bagi Kupon Pertalite</h6>
+                </a>
+                <p class="text-muted small mb-0"><i class="bi bi-clock me-1"></i> 18 Okt 2026</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <article class="card border-0 shadow-sm rounded-4 p-3 card-hover bg-white">
+            <div class="d-flex gap-3 align-items-center">
+              <img src="stiker kartu asuransi.jpeg" class="rounded-3" alt="Thumbnail" style="width: 85px; height: 85px; object-fit: cover;">
+              <div>
+                <a href="#" class="text-decoration-none text-dark">
+                  <h6 class="fw-bold mb-1 fs-6">Biaya Resmi Urus SIM Harus Disampaikan Secara Terbuka, Cegah Calo</h6>
+                </a>
+                <p class="text-muted small mb-0"><i class="bi bi-clock me-1"></i> 18 Okt 2026</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <article class="card border-0 shadow-sm rounded-4 p-3 card-hover bg-white">
+            <div class="d-flex gap-3 align-items-center">
+              <img src="bupati-bogor-raih-penghargaan.jpeg" class="rounded-3" alt="Thumbnail" style="width: 85px; height: 85px; object-fit: cover;">
+              <div>
+                <a href="https://www.detik.com/jabar/berita/d-8711427/raih-penghargaan-rudy-susmanto-ajak-warga-bangun-bogor" class="text-decoration-none text-dark">
+                  <h6 class="fw-bold mb-1 fs-6">Raih Penghargaan, Rudy Susmanto Ajak Warga Bangun Bogor</h6>
+                </a>
+                <p class="text-muted small mb-0"><i class="bi bi-clock me-1"></i> 17 Okt 2026</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Video -->
+    <section class="container py-4 mb-5" id="galeri-video">
+      <div class="mb-4">
+        <h2 class="fw-bold fs-3 mb-0">Galeri Video</h2>
+        <p class="text-muted small mb-0">Dokumentasi kegiatan dan sosialisasi pelayanan</p>
+      </div>
+
+      <div class="row g-4 video-gallery">
+        <div class="col-lg-4 col-md-6 video-gallery-column">
+          <div class="card border-0 shadow-sm rounded-4 card-hover overflow-hidden bg-white h-100 video-card">
+            <video class="w-100 video-player" controls playsinline preload="metadata">
+              <source src="INTIPK1.mp4" type="video/mp4">
+            </video>
+            <div class="card-body p-3">
+              <h5 class="fw-semibold fs-6 mb-0 text-dark">
+                Intip Keseruan Tour Namu Balai Kota, Dari Wisata Hingga Layanan Publik
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 video-gallery-column">
+          <div class="card border-0 shadow-sm rounded-4 card-hover overflow-hidden bg-white h-100 video-card">
+            <video class="w-100 video-player" controls playsinline preload="metadata">
+              <source src="Peningkatan Kualitas Pelayanan Publik Kementerian PU - Kementerian PU (1080p) (1).mp4" type="video/mp4">
+            </video>
+            <div class="card-body p-3">
+              <h5 class="fw-semibold fs-6 mb-0 text-dark">
+                Peningkatan Pelayanan Publik lewat Transformasi Digital di Jakarta
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 video-gallery-column">
+          <div class="card border-0 shadow-sm rounded-4 card-hover overflow-hidden bg-white h-100 video-card">
+            <video class="w-100 video-player" controls playsinline preload="metadata">
+              <source src="Peningkatan Pelayanan Publik lewat Tranformasi Digital di Jakarta - Jakarta Smart City (1080p) (1).mp4" type="video/mp4">
+            </video>
+            <div class="card-body p-3">
+              <h5 class="fw-semibold fs-6 mb-0 text-dark">
+                Peningkatan Kualitas Pelayanan Publik Kementerian PU
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ layanan publik -->
+    <section class="container py-4 mb-4" id="faq" aria-labelledby="judul-faq">
+      <div class="text-center mb-4">
+        <span class="badge rounded-pill bg-primary-subtle text-theme mb-2">Bantuan cepat</span>
+        <h2 class="fw-bold fs-3 mx-auto" id="judul-faq">Pertanyaan yang Sering Diajukan</h2>
+        <p class="text-muted mb-0">Cari jawaban umum tentang layanan dan penggunaan prototype ini.</p>
+      </div>
+
+      <div class="faq-search">
+        <label for="cariFaq" class="form-label fw-semibold">Cari pertanyaan</label>
+        <input
+          type="search"
+          class="form-control"
+          id="cariFaq"
+          placeholder="Contoh: cara buat KTP atau lama urus izin"
+          autocomplete="off"
+          aria-controls="daftarFaq"
+        >
+        <p class="small text-muted mt-2 mb-0" id="statusCariFaq" aria-live="polite"></p>
+      </div>
+
+      <div class="faq-list" id="daftarFaq">
+        <details class="faq-item">
+          <summary>Bagaimana cara membuat KTP?</summary>
+          <p>Persyaratan dan proses dapat berbeda menurut kondisi pemohon dan daerah. Periksa informasi terbaru melalui Disdukcapil atau kanal resmi pemerintah daerah setempat. Portal prototype ini tidak memproses permohonan KTP.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Berapa lama mengurus izin usaha?</summary>
+          <p>Waktu pemrosesan bergantung pada jenis kegiatan, tingkat risiko, kelengkapan persyaratan, dan proses instansi terkait. Gunakan informasi pada OSS dan instansi berwenang; angka pada dashboard situs ini hanyalah ilustrasi.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah laporan warga pada website ini terkirim ke pemerintah?</summary>
+          <p>Tidak. Formulir laporan di situs ini hanya simulasi dan tersimpan pada browser perangkat ini. Untuk laporan sungguhan, gunakan kanal resmi pemerintah daerah atau instansi yang bertanggung jawab.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Bagaimana cara melacak kode laporan?</summary>
+          <p>Masukkan kode laporan simulasi yang dibuat pada perangkat dan browser ini. Kode contoh DEMO-1042 dan DEMO-2087 juga dapat digunakan. Fitur ini tidak terhubung ke sistem pengaduan sungguhan.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah saya perlu memasukkan data pribadi?</summary>
+          <p>Tidak. Gunakan data contoh saja. Jangan masukkan NIK, alamat rumah, nomor telepon, kata sandi, atau informasi pribadi lainnya ke formulir prototype ini.</p>
+        </details>
+      </div>
+      <p class="small text-muted text-center mt-3 mb-0" id="pesanFaqKosong" hidden>Tidak ada pertanyaan yang cocok. Coba kata kunci lain.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-white pt-5 pb-3" style="background-color: #5c1010;">
+      <div class="container">
+        <div class="row g-4 mb-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <img src="logo-layanan-publik.svg" alt="Logo Portal Layanan Publik" style="width: 48px; height: 48px; object-fit: contain;">
+              <div>
+                <h6 class="fw-bold mb-0">PORTAL LAYANAN PUBLIK</h6>
+                <small class="text-white-50">Informasi dan simulasi layanan warga</small>
+              </div>
+            </div>
+            <p class="small text-white-50 leading-relaxed">
+              Portal informasi dan prototype layanan warga yang dirancang agar panduan pelayanan mudah ditemukan dan dipahami.
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6">
+            <h6 class="fw-bold mb-3">Menu Utama</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2"><a href="#layanan-warga" class="text-white-50 text-decoration-none">Layanan Warga</a></li>
+              <li class="mb-2"><a href="#data-layanan" class="text-white-50 text-decoration-none">Data Layanan</a></li>
+              <li class="mb-2"><a href="index4.html" class="text-white-50 text-decoration-none">Informasi Layanan</a></li>
+              <li class="mb-2"><a href="index2.html" class="text-white-50 text-decoration-none">Daftar</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h6 class="fw-bold mb-3">Kebijakan & Bantuan</h6>
+            <ul class="list-unstyled small">
+              <li class="mb-2"><a href="ketentuan.html" class="text-white-50 text-decoration-none">Kebijakan Privasi</a></li>
+              <li class="mb-2"><a href="ketentuan.html" class="text-white-50 text-decoration-none">Syarat & Ketentuan</a></li>
+              <li class="mb-2"><a href="#pelacakan-layanan" class="text-white-50 text-decoration-none">Pelacakan layanan</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h6 class="fw-bold mb-3">Cari Layanan</h6>
+            <form class="input-group input-group-sm" id="cariLayananForm" role="search">
+              <label class="visually-hidden" for="cariLayananInput">Cari kategori atau layanan</label>
+              <input type="search" class="form-control rounded-start-pill px-3" id="cariLayananInput" placeholder="Cari layanan...">
+              <button class="btn btn-light rounded-end-pill px-3" type="submit" aria-label="Cari layanan"><i class="bi bi-search" aria-hidden="true"></i></button>
+            </form>
+            <p class="small text-white-50 mt-2 mb-0" id="cariLayananStatus" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <hr class="border-white opacity-10 my-4">
+
+        <div class="text-center small text-white-50">
+          &copy; 2026 <strong>Portal Layanan Publik</strong>. Prototype informasi, bukan layanan resmi instansi pemerintah.
+        </div>
+      </div>
+    </footer>
+
+    <button id="tombolKeAtas" class="back-to-top" type="button" aria-label="Kembali ke atas" title="Kembali ke atas">
+      <i class="bi bi-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <button
+      class="emergency-toggle"
+      type="button"
+      id="tombolDarurat"
+      aria-label="Buka nomor darurat"
+      aria-controls="panelDarurat"
+      aria-expanded="false"
+      title="Nomor darurat"
+    >
+      <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+    </button>
+    <aside class="emergency-panel" id="panelDarurat" aria-labelledby="judulDarurat" hidden>
+      <div class="d-flex justify-content-between align-items-start gap-2">
+        <div>
+          <h2 class="h6 fw-bold mb-1" id="judulDarurat">Nomor darurat Indonesia</h2>
+          <p class="small text-muted mb-3">Pilih nomor untuk menelepon. Ketersediaan layanan dapat berbeda menurut wilayah dan operator.</p>
+        </div>
+        <button type="button" class="btn-close" id="tutupPanelDarurat" aria-label="Tutup nomor darurat"></button>
+      </div>
+      <ul class="list-unstyled small mb-2">
+        <li class="d-flex justify-content-between gap-3 py-2 border-bottom"><span>Layanan darurat terpadu*</span><a href="tel:112" aria-label="Telepon layanan darurat terpadu di 112" title="Telepon 112">112</a></li>
+        <li class="d-flex justify-content-between gap-3 py-2 border-bottom"><span>Polisi</span><a href="tel:110" aria-label="Telepon polisi di 110" title="Telepon 110">110</a></li>
+        <li class="d-flex justify-content-between gap-3 py-2 border-bottom"><span>Pemadam kebakaran</span><a href="tel:113" aria-label="Telepon pemadam kebakaran di 113" title="Telepon 113">113</a></li>
+        <li class="d-flex justify-content-between gap-3 py-2"><span>Darurat medis</span><a href="tel:119" aria-label="Telepon layanan darurat medis di 119" title="Telepon 119">119</a></li>
+      </ul>
+      <p class="small text-muted mb-0">*Layanan 112 belum tersedia di semua daerah. Jika nomor tidak tersambung, hubungi layanan resmi setempat atau fasilitas kesehatan terdekat.</p>
+    </aside>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+   
+    <!-- Script Auth Check -->
+    <script>
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const navbar = document.querySelector(".navbar");
+      const backToTop = document.getElementById("tombolKeAtas");
+      let scrollFrame = null;
+
+      const updateScrollEffects = () => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollableHeight > 0
+          ? Math.min(1, Math.max(0, window.scrollY / scrollableHeight))
+          : 0;
+
+        document.body.style.setProperty("--scroll-progress", progress.toString());
+        navbar.classList.toggle("is-scrolled", window.scrollY > 12);
+        backToTop.classList.toggle("is-visible", window.scrollY > 480);
+        scrollFrame = null;
+      };
+
+      window.addEventListener("scroll", () => {
+        if (scrollFrame === null) {
+          scrollFrame = window.requestAnimationFrame(updateScrollEffects);
+        }
+      }, { passive: true });
+      updateScrollEffects();
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReducedMotion ? "auto" : "smooth"
+        });
+      });
+
+      const revealTargets = document.querySelectorAll(
+        "section.container, .card-hover, .performance-stat, .performance-chart, footer .row > div"
+      );
+
+      if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        revealTargets.forEach((element) => element.classList.add("is-visible"));
+      } else {
+        revealTargets.forEach((element, index) => {
+          element.classList.add("reveal");
+          if (element.classList.contains("card-hover")) {
+            element.style.transitionDelay = `${(index % 3) * 80}ms`;
+            element.addEventListener("transitionend", (event) => {
+              if (event.propertyName === "opacity") {
+                element.style.transitionDelay = "";
+              }
+            });
+          }
+        });
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        revealTargets.forEach((element) => revealObserver.observe(element));
+      }
+
+      const typingText = document.querySelector(".typing-text");
+      if (typingText && !prefersReducedMotion) {
+        const fullText = typingText.textContent;
+        typingText.textContent = "";
+        typingText.classList.add("is-typing");
+
+        let characterIndex = 0;
+        const typeNextCharacter = () => {
+          if (characterIndex >= fullText.length) {
+            typingText.classList.remove("is-typing");
+            return;
+          }
+
+          typingText.textContent += fullText.charAt(characterIndex);
+          characterIndex += 1;
+          window.setTimeout(typeNextCharacter, 65);
+        };
+
+        window.setTimeout(typeNextCharacter, 350);
+      }
+
+      const galleryVideos = document.querySelectorAll("#galeri-video .video-player");
+
+      galleryVideos.forEach((video) => {
+        const card = video.closest(".video-card");
+        const column = video.closest(".video-gallery-column");
+
+        video.addEventListener("play", () => {
+          galleryVideos.forEach((otherVideo) => {
+            if (otherVideo !== video) {
+              otherVideo.pause();
+            }
+          });
+
+          document.querySelectorAll("#galeri-video .video-card.is-playing").forEach((playingCard) => {
+            playingCard.classList.remove("is-playing");
+          });
+          document.querySelectorAll("#galeri-video .video-gallery-column.is-playing").forEach((playingColumn) => {
+            playingColumn.classList.remove("is-playing");
+          });
+
+          card.classList.add("is-playing");
+          column.classList.add("is-playing");
+        });
+
+        const resetPlayingCard = () => {
+          card.classList.remove("is-playing");
+          column.classList.remove("is-playing");
+        };
+
+        video.addEventListener("pause", resetPlayingCard);
+        video.addEventListener("ended", resetPlayingCard);
+      });
+
+      const cariLayananForm = document.getElementById("cariLayananForm");
+      const cariLayananInput = document.getElementById("cariLayananInput");
+      const cariLayananStatus = document.getElementById("cariLayananStatus");
+      const serviceItems = document.querySelectorAll("[data-service-item]");
+
+      cariLayananForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const query = cariLayananInput.value.trim().toLocaleLowerCase("id");
+        let matchCount = 0;
+
+        serviceItems.forEach((item) => {
+          const matches = item.textContent.toLocaleLowerCase("id").includes(query);
+          item.classList.toggle("d-none", !matches);
+          if (matches) matchCount++;
+        });
+
+        cariLayananStatus.textContent = query
+          ? matchCount
+            ? `${matchCount} layanan cocok dengan "${cariLayananInput.value.trim()}".`
+            : `Belum ada layanan yang cocok dengan "${cariLayananInput.value.trim()}".`
+          : "Semua layanan ditampilkan.";
+      });
+
+      const email = localStorage.getItem("emailPengguna");
+      const tombolAkun = document.getElementById("tombolAkun");
+
+      const kunciLaporanWarga = "ibadLayananWargaDemoV1";
+      const laporanWargaForm = document.getElementById("laporanWargaForm");
+      const kategoriMasalah = document.getElementById("kategoriMasalah");
+      const areaUmum = document.getElementById("areaUmum");
+      const deskripsiMasalah = document.getElementById("deskripsiMasalah");
+      const fotoBukti = document.getElementById("fotoBukti");
+      const pratinjauFotoBukti = document.getElementById("pratinjauFotoBukti");
+      const namaFotoBukti = document.getElementById("namaFotoBukti");
+      let urlPratinjauFotoBukti = "";
+      const jumlahKarakter = document.getElementById("jumlahKarakter");
+      const pesanLaporan = document.getElementById("pesanLaporan");
+      const pelacakanForm = document.getElementById("pelacakanForm");
+      const kodePelacakan = document.getElementById("kodePelacakan");
+      const hasilPelacakan = document.getElementById("hasilPelacakan");
+      const tutupHasilPelacakan = document.getElementById("tutupHasilPelacakan");
+      const hasilKodePelacakan = document.getElementById("hasilKodePelacakan");
+      const statusPelacakan = document.getElementById("statusPelacakan");
+      const hasilKategori = document.getElementById("hasilKategori");
+      const hasilArea = document.getElementById("hasilArea");
+      const hasilDeskripsi = document.getElementById("hasilDeskripsi");
+      const hasilNamaFoto = document.getElementById("hasilNamaFoto");
+      const hasilFotoBukti = document.getElementById("hasilFotoBukti");
+      const hasilWaktu = document.getElementById("hasilWaktu");
+      const timelinePelacakan = document.getElementById("timelinePelacakan");
+      const pesanPelacakan = document.getElementById("pesanPelacakan");
+      const hapusLaporan = document.getElementById("hapusLaporan");
+      const gunakanLokasi = document.getElementById("gunakanLokasi");
+      const petunjukLokasi = document.getElementById("petunjukLokasi");
+      const statusLaporan = ["Diterima", "Verifikasi", "Dalam Proses", "Selesai"];
+      const laporanContoh = [
+        {
+          kode: "DEMO-1042",
+          kategori: "Kebersihan lingkungan",
+          area: "Contoh area umum",
+          deskripsi: "Ini adalah laporan contoh untuk memperagakan fitur pelacakan.",
+          status: "Verifikasi",
+          dibuatPada: "2026-10-25T00:00:00.000Z"
+        },
+        {
+          kode: "DEMO-2087",
+          kategori: "Fasilitas umum",
+          area: "Contoh area umum",
+          deskripsi: "Ini adalah laporan contoh untuk memperagakan fitur pelacakan.",
+          status: "Dalam Proses",
+          dibuatPada: "2026-10-25T00:00:00.000Z"
+        }
+      ];
+
+      const tampilkanPesan = (elemen, pesan, jenis = "") => {
+        elemen.textContent = pesan;
+        elemen.classList.toggle("is-error", jenis === "error");
+        elemen.classList.toggle("is-success", jenis === "success");
+      };
+
+      const bersihkanPratinjauFotoBukti = (hapusPilihan = false) => {
+        if (urlPratinjauFotoBukti) {
+          URL.revokeObjectURL(urlPratinjauFotoBukti);
+          urlPratinjauFotoBukti = "";
+        }
+        pratinjauFotoBukti.removeAttribute("src");
+        pratinjauFotoBukti.hidden = true;
+        if (hapusPilihan) fotoBukti.value = "";
+      };
+
+      const tutupHasilPelacakanWarga = () => {
+        hasilPelacakan.hidden = true;
+        hasilFotoBukti.removeAttribute("src");
+        hasilFotoBukti.hidden = true;
+        hasilNamaFoto.textContent = "";
+        hasilNamaFoto.hidden = true;
+        bersihkanPratinjauFotoBukti(true);
+      };
+
+      const bacaFotoSebagaiDataUrl = (file) => new Promise((resolve, reject) => {
+        const pembaca = new FileReader();
+        pembaca.addEventListener("load", () => {
+          if (typeof pembaca.result !== "string") {
+            reject(new Error("Foto tidak dapat dibaca sebagai gambar."));
+            return;
+          }
+          resolve(pembaca.result);
+        });
+        pembaca.addEventListener("error", () => {
+          reject(new Error("Foto gagal dibaca."));
+        });
+        pembaca.readAsDataURL(file);
+      });
+
+      const bacaLaporanTersimpan = () => {
+        const data = localStorage.getItem(kunciLaporanWarga);
+        if (!data) return [];
+
+        const laporan = JSON.parse(data);
+        if (!Array.isArray(laporan)) {
+          throw new Error("Format laporan tersimpan tidak valid.");
+        }
+        return laporan;
+      };
+
+      const buatKodeLaporan = (laporanTersimpan) => {
+        for (let percobaan = 0; percobaan < 100; percobaan++) {
+          const kode = `DEMO-${Math.floor(1000 + Math.random() * 9000)}`;
+          const sudahDipakai = laporanTersimpan.some((laporan) => laporan.kode === kode)
+            || laporanContoh.some((laporan) => laporan.kode === kode);
+          if (!sudahDipakai) return kode;
+        }
+        throw new Error("Kode demo tidak dapat dibuat. Coba lagi.");
+      };
+
+      const tampilkanHasilPelacakan = (laporan) => {
+        hasilKodePelacakan.textContent = laporan.kode;
+        statusPelacakan.textContent = `Status simulasi: ${laporan.status}`;
+        const statusAktif = Math.max(0, statusLaporan.indexOf(laporan.status));
+        timelinePelacakan.querySelectorAll("[data-status-step]").forEach((langkah, index) => {
+          langkah.classList.toggle("is-complete", index < statusAktif);
+          langkah.classList.toggle("is-current", index === statusAktif);
+          if (index === statusAktif) {
+            langkah.setAttribute("aria-current", "step");
+          } else {
+            langkah.removeAttribute("aria-current");
+          }
+        });
+        hasilKategori.textContent = laporan.kategori;
+        hasilArea.textContent = laporan.area ? `Area umum: ${laporan.area}` : "";
+        hasilArea.hidden = !laporan.area;
+        hasilDeskripsi.textContent = laporan.deskripsi;
+        hasilNamaFoto.textContent = laporan.fotoNama ? `Foto bukti: ${laporan.fotoNama}` : "";
+        hasilNamaFoto.hidden = !laporan.fotoNama;
+        hasilFotoBukti.src = laporan.fotoData || "";
+        hasilFotoBukti.hidden = !laporan.fotoData;
+
+        const tanggal = new Date(laporan.dibuatPada);
+        hasilWaktu.textContent = Number.isNaN(tanggal.getTime())
+          ? "Waktu laporan tidak tersedia."
+          : `Dibuat ${new Intl.DateTimeFormat("id-ID", {
+            dateStyle: "medium",
+            timeStyle: "short"
+          }).format(tanggal)}`;
+
+        hasilPelacakan.hidden = false;
+      };
+
+      deskripsiMasalah.addEventListener("input", () => {
+        jumlahKarakter.textContent = String(deskripsiMasalah.value.length);
+      });
+
+      fotoBukti.addEventListener("change", () => {
+        const file = fotoBukti.files[0];
+        bersihkanPratinjauFotoBukti();
+        tampilkanPesan(namaFotoBukti, "");
+
+        if (!file) return;
+        if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+          fotoBukti.value = "";
+          tampilkanPesan(namaFotoBukti, "Pilih foto JPG, PNG, atau WebP.", "error");
+          return;
+        }
+        if (file.size > 1024 * 1024) {
+          fotoBukti.value = "";
+          tampilkanPesan(namaFotoBukti, "Ukuran foto maksimal 1 MB.", "error");
+          return;
+        }
+
+        urlPratinjauFotoBukti = URL.createObjectURL(file);
+        pratinjauFotoBukti.src = urlPratinjauFotoBukti;
+        pratinjauFotoBukti.hidden = false;
+        tampilkanPesan(namaFotoBukti, `Foto dipilih: ${file.name}`, "success");
+      });
+
+      gunakanLokasi.addEventListener("click", () => {
+        if (!("geolocation" in navigator)) {
+          tampilkanPesan(petunjukLokasi, "Browser ini tidak menyediakan fitur lokasi.", "error");
+          return;
+        }
+
+        gunakanLokasi.disabled = true;
+        tampilkanPesan(petunjukLokasi, "Meminta izin lokasi perangkat...");
+        navigator.geolocation.getCurrentPosition(
+          (posisi) => {
+            areaUmum.value = `Koordinat perkiraan ${posisi.coords.latitude.toFixed(3)}, ${posisi.coords.longitude.toFixed(3)}`;
+            tampilkanPesan(petunjukLokasi, "Lokasi perangkat ditambahkan. Data hanya disimpan lokal jika laporan dibuat.");
+            gunakanLokasi.disabled = false;
+          },
+          (kesalahan) => {
+            const pesan = kesalahan.code === kesalahan.PERMISSION_DENIED
+              ? "Izin lokasi ditolak. Anda dapat mengisi area umum secara manual."
+              : "Lokasi tidak tersedia. Anda dapat mengisi area umum secara manual.";
+            tampilkanPesan(petunjukLokasi, pesan, "error");
+            gunakanLokasi.disabled = false;
+          },
+          { enableHighAccuracy: false, maximumAge: 60000, timeout: 10000 }
+        );
+      });
+
+      laporanWargaForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const kategori = kategoriMasalah.value;
+        const deskripsi = deskripsiMasalah.value.trim();
+        const fileFoto = fotoBukti.files[0];
+
+        if (!kategori || !deskripsi) {
+          tampilkanPesan(pesanLaporan, "Pilih kategori dan isi deskripsi laporan.", "error");
+          return;
+        }
+
+        try {
+          const fotoData = fileFoto ? await bacaFotoSebagaiDataUrl(fileFoto) : "";
+          const laporanTersimpan = bacaLaporanTersimpan();
+          const laporan = {
+            kode: buatKodeLaporan(laporanTersimpan),
+            kategori,
+            area: areaUmum.value.trim(),
+            deskripsi,
+            fotoNama: fileFoto ? fileFoto.name : "",
+            fotoData,
+            status: statusLaporan[Math.floor(Math.random() * statusLaporan.length)],
+            dibuatPada: new Date().toISOString()
+          };
+
+          localStorage.setItem(
+            kunciLaporanWarga,
+            JSON.stringify([...laporanTersimpan, laporan])
+          );
+
+          kodePelacakan.value = laporan.kode;
+          tampilkanHasilPelacakan(laporan);
+          laporanWargaForm.reset();
+          bersihkanPratinjauFotoBukti();
+          tampilkanPesan(namaFotoBukti, "");
+          jumlahKarakter.textContent = "0";
+          tampilkanPesan(
+            pesanLaporan,
+            `Laporan simulasi tersimpan di perangkat ini. Kode: ${laporan.kode}`,
+            "success"
+          );
+          tampilkanPesan(pesanPelacakan, "");
+        } catch (kesalahan) {
+          console.error("Gagal menyimpan laporan simulasi warga:", kesalahan);
+          tampilkanPesan(
+            pesanLaporan,
+            "Laporan tidak dapat disimpan di browser ini. Periksa pengaturan penyimpanan browser dan coba lagi.",
+            "error"
+          );
+        }
+      });
+
+      tutupHasilPelacakan.addEventListener("click", () => {
+        tutupHasilPelacakanWarga();
+        tampilkanPesan(pesanPelacakan, "");
+      });
+
+      window.addEventListener("pagehide", () => {
+        tutupHasilPelacakanWarga();
+      });
+
+      pelacakanForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const kode = kodePelacakan.value.trim().toLocaleUpperCase("id");
+
+        if (!kode) {
+          kodePelacakan.setCustomValidity("Masukkan kode tiket contoh.");
+          kodePelacakan.reportValidity();
+          kodePelacakan.setCustomValidity("");
+          return;
+        }
+
+        try {
+          const laporanTersimpan = bacaLaporanTersimpan();
+          const laporan = laporanTersimpan.find(
+            (item) => item.kode === kode
+          ) || laporanContoh.find((item) => item.kode === kode);
+
+          if (!laporan) {
+            tutupHasilPelacakanWarga();
+            tampilkanPesan(
+              pesanPelacakan,
+              "Kode tidak ditemukan. Gunakan laporan di browser ini atau coba DEMO-1042 / DEMO-2087.",
+              "error"
+            );
+            return;
+          }
+
+          tampilkanHasilPelacakan(laporan);
+          tampilkanPesan(pesanPelacakan, "Laporan simulasi ditemukan di perangkat ini.", "success");
+        } catch (kesalahan) {
+          console.error("Gagal membaca laporan simulasi warga:", kesalahan);
+          tampilkanPesan(
+            pesanPelacakan,
+            "Data laporan tidak dapat dibaca. Penyimpanan browser mungkin rusak atau tidak tersedia.",
+            "error"
+          );
+        }
+      });
+
+      hapusLaporan.addEventListener("click", () => {
+        if (!window.confirm("Hapus semua laporan simulasi yang tersimpan di perangkat ini?")) return;
+
+        try {
+          localStorage.removeItem(kunciLaporanWarga);
+          tutupHasilPelacakanWarga();
+          tampilkanPesan(pesanPelacakan, "Semua laporan simulasi lokal telah dihapus.", "success");
+          tampilkanPesan(pesanLaporan, "");
+        } catch (kesalahan) {
+          console.error("Gagal menghapus laporan simulasi warga:", kesalahan);
+          tampilkanPesan(
+            pesanPelacakan,
+            "Laporan tidak dapat dihapus. Periksa pengaturan penyimpanan browser.",
+            "error"
+          );
+        }
+      });
+
+      if (email) {
+        const akun = document.createElement("span");
+        akun.className = "btn btn-outline-primary rounded-pill btn-sm fw-medium px-3";
+        akun.textContent = email;
+
+        const logout = document.createElement("button");
+        logout.className = "btn btn-outline-danger rounded-pill btn-sm px-3";
+        logout.textContent = "Logout";
+
+        logout.onclick = function () {
+          localStorage.removeItem("emailPengguna");
+          location.reload();
+        };
+
+        tombolAkun.replaceChildren(akun, logout);
+      }
+    </script>
+
+    <script>
+      const tombolTema = document.getElementById("tombolTema");
+      const labelTombolTema = document.getElementById("labelTombolTema");
+      const ikonTombolTema = tombolTema.querySelector(".bi");
+      const rootHtml = document.documentElement;
+
+      const bacaPreferensi = (kunci) => {
+        try {
+          return localStorage.getItem(kunci);
+        } catch (kesalahan) {
+          console.warn(`Preferensi ${kunci} tidak dapat dibaca:`, kesalahan);
+          return null;
+        }
+      };
+
+      const simpanPreferensi = (kunci, nilai) => {
+        try {
+          localStorage.setItem(kunci, nilai);
+        } catch (kesalahan) {
+          console.warn(`Preferensi ${kunci} tidak dapat disimpan:`, kesalahan);
+        }
+      };
+
+      const aturTema = (tema) => {
+        const gunakanGelap = tema === "dark";
+        rootHtml.dataset.theme = gunakanGelap ? "dark" : "light";
+        tombolTema.setAttribute("aria-pressed", String(gunakanGelap));
+        labelTombolTema.textContent = gunakanGelap ? "Mode terang" : "Mode gelap";
+        ikonTombolTema.className = gunakanGelap
+          ? "bi bi-sun"
+          : "bi bi-moon-stars";
+      };
+
+      const preferensiTema = bacaPreferensi("preferensiTemaPortal");
+      const temaAwal = preferensiTema === "dark" || preferensiTema === "light"
+        ? preferensiTema
+        : window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      aturTema(temaAwal);
+
+      tombolTema.addEventListener("click", () => {
+        const temaBerikutnya = rootHtml.dataset.theme === "dark" ? "light" : "dark";
+        aturTema(temaBerikutnya);
+        simpanPreferensi("preferensiTemaPortal", temaBerikutnya);
+      });
+
+      const tombolKurangiTeks = document.getElementById("kurangiUkuranTeks");
+      const tombolTambahTeks = document.getElementById("tambahUkuranTeks");
+      const statusUkuranTeks = document.getElementById("statusUkuranTeks");
+      const batasUkuranTeks = { minimum: 0.85, maksimum: 1.3, langkah: 0.1 };
+      const nilaiUkuranTeks = Number.parseFloat(bacaPreferensi("ukuranTeksPortal") || "1");
+      let skalaTeks = Number.isFinite(nilaiUkuranTeks)
+        ? Math.min(batasUkuranTeks.maksimum, Math.max(batasUkuranTeks.minimum, nilaiUkuranTeks))
+        : 1;
+
+      const terapkanUkuranTeks = () => {
+        rootHtml.style.fontSize = `${Math.round(skalaTeks * 100)}%`;
+        statusUkuranTeks.textContent = `Ukuran teks ${Math.round(skalaTeks * 100)} persen`;
+        tombolKurangiTeks.disabled = skalaTeks <= batasUkuranTeks.minimum;
+        tombolTambahTeks.disabled = skalaTeks >= batasUkuranTeks.maksimum;
+      };
+
+      tombolKurangiTeks.addEventListener("click", () => {
+        skalaTeks = Math.max(
+          batasUkuranTeks.minimum,
+          Math.round((skalaTeks - batasUkuranTeks.langkah) * 100) / 100
+        );
+        terapkanUkuranTeks();
+        simpanPreferensi("ukuranTeksPortal", String(skalaTeks));
+      });
+
+      tombolTambahTeks.addEventListener("click", () => {
+        skalaTeks = Math.min(
+          batasUkuranTeks.maksimum,
+          Math.round((skalaTeks + batasUkuranTeks.langkah) * 100) / 100
+        );
+        terapkanUkuranTeks();
+        simpanPreferensi("ukuranTeksPortal", String(skalaTeks));
+      });
+      terapkanUkuranTeks();
+
+      const cariFaq = document.getElementById("cariFaq");
+      const daftarFaq = Array.from(document.querySelectorAll("#daftarFaq .faq-item"));
+      const statusCariFaq = document.getElementById("statusCariFaq");
+      const pesanFaqKosong = document.getElementById("pesanFaqKosong");
+
+      cariFaq.addEventListener("input", () => {
+        const kataKunci = cariFaq.value.trim().toLocaleLowerCase("id");
+        let jumlahHasil = 0;
+
+        daftarFaq.forEach((item) => {
+          const cocok = item.textContent.toLocaleLowerCase("id").includes(kataKunci);
+          item.hidden = !cocok;
+          item.open = Boolean(kataKunci && cocok);
+          if (cocok) jumlahHasil++;
+        });
+
+        pesanFaqKosong.hidden = jumlahHasil !== 0;
+        statusCariFaq.textContent = kataKunci
+          ? `${jumlahHasil} pertanyaan ditemukan.`
+          : "";
+      });
+
+      const tombolDarurat = document.getElementById("tombolDarurat");
+      const panelDarurat = document.getElementById("panelDarurat");
+      const tutupPanelDarurat = document.getElementById("tutupPanelDarurat");
+
+      const aturPanelDarurat = (buka) => {
+        panelDarurat.hidden = !buka;
+        tombolDarurat.setAttribute("aria-expanded", String(buka));
+        if (buka) {
+          panelDarurat.querySelector("a").focus();
+        }
+      };
+
+      tombolDarurat.addEventListener("click", () => {
+        aturPanelDarurat(panelDarurat.hidden);
+      });
+
+      tutupPanelDarurat.addEventListener("click", () => {
+        aturPanelDarurat(false);
+        tombolDarurat.focus();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !panelDarurat.hidden) {
+          aturPanelDarurat(false);
+          tombolDarurat.focus();
+        }
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          !panelDarurat.hidden
+          && !panelDarurat.contains(event.target)
+          && !tombolDarurat.contains(event.target)
+        ) {
+          aturPanelDarurat(false);
+        }
+      });
+    </script>
+
+<!-- Floating AI Assistant Widget (Fitur WOW) -->
+<button class="ai-widget-btn" id="tombolAiWidget" aria-label="Bantuan Asisten Informasi Publik" aria-controls="kotakChatAi" aria-expanded="false" title="Tanya Asisten Informasi">
+  <i class="bi bi-robot"></i>
+</button>
+
+<div class="ai-chat-box" id="kotakChatAi" hidden>
+  <div class="ai-chat-header d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-robot fs-5"></i>
+      <div>
+        <h6 class="fw-bold mb-0 text-white fs-6">Asisten Informasi Publik</h6>
+        <small class="text-white-50" style="font-size: 0.7rem;">Panduan prototype · bukan layanan resmi</small>
+      </div>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+      <button type="button" class="btn btn-sm btn-outline-light rounded-pill" id="tombolBacakan" aria-pressed="false" title="Aktifkan pembacaan jawaban">
+        <i class="bi bi-volume-mute" aria-hidden="true"></i><span class="visually-hidden">Bacakan jawaban</span>
+      </button>
+      <button type="button" class="btn-close btn-close-white" id="tutupChatAi" aria-label="Tutup"></button>
+    </div>
+  </div>
+  <div class="ai-chat-body" id="isiChatAi" aria-live="polite" aria-relevant="additions">
+    <div class="chat-msg bot">
+      Hai! Ada yang bisa saya bantu? Tanya saja dengan bahasa sehari-hari, misalnya soal laporan warga, pelacakan, KTP, izin usaha, atau cara memakai situs ini. Ini masih prototype, jadi jangan kirim data pribadi ya.
+    </div>
+  </div>
+  <div class="p-2 bg-white border-top">
+    <form id="formChatAi" class="input-group input-group-sm">
+      <button class="btn btn-outline-secondary" type="button" id="tombolSuaraChat" title="Gunakan suara untuk bertanya" aria-label="Gunakan suara untuk bertanya">
+        <i class="bi bi-mic"></i>
+      </button>
+      <input type="text" class="form-control" id="inputChatAi" placeholder="Tanya dengan bahasa sehari-hari..." aria-label="Tulis pertanyaan untuk asisten" required autocomplete="off">
+      <button class="btn btn-primary px-3" id="tombolKirimChatAi" type="submit" aria-label="Kirim pertanyaan"><i class="bi bi-send-fill"></i></button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const tombolAiWidget = document.getElementById("tombolAiWidget");
+  const kotakChatAi = document.getElementById("kotakChatAi");
+  const tutupChatAi = document.getElementById("tutupChatAi");
+  const formChatAi = document.getElementById("formChatAi");
+  const inputChatAi = document.getElementById("inputChatAi");
+  const isiChatAi = document.getElementById("isiChatAi");
+  const tombolSuaraChat = document.getElementById("tombolSuaraChat");
+  const tombolKirimChatAi = document.getElementById("tombolKirimChatAi");
+
+  tombolAiWidget.addEventListener("click", () => {
+    kotakChatAi.hidden = !kotakChatAi.hidden;
+    tombolAiWidget.setAttribute("aria-expanded", String(!kotakChatAi.hidden));
+    if (!kotakChatAi.hidden) inputChatAi.focus();
+  });
+
+  tutupChatAi.addEventListener("click", () => {
+    kotakChatAi.hidden = true;
+    tombolAiWidget.setAttribute("aria-expanded", "false");
+    tombolAiWidget.focus();
+  });
+
+  const normalisasiTeksAi = (teks) => teks
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
+  const mengandungSalahSatu = (teks, daftarKata) => {
+    const teksBerbatas = ` ${teks} `;
+    return daftarKata.some((kata) => teksBerbatas.includes(` ${kata} `));
+  };
+
+  const dapatkanResponAi = (pesan) => {
+    const teks = normalisasiTeksAi(pesan);
+    const tanyaBiaya = mengandungSalahSatu(teks, ["biaya", "bayar", "bayarnya", "tarif", "gratis", "ongkos", "harga", "harganya"]);
+    const tanyaWaktu = mengandungSalahSatu(teks, ["berapa lama", "berapa hari", "kapan selesai", "selesainya kapan", "lama proses", "butuh waktu", "waktu proses", "waktu pengurusan", "estimasi", "durasi"]);
+
+    if (mengandungSalahSatu(teks, ["halo", "hai", "hi", "pagi", "siang", "sore", "malam", "assalamualaikum"])) {
+      return "Hai! Senang bisa bantu 😊 Mau tanya soal layanan di halaman ini, cara membuat laporan, pelacakan, atau hal lainnya?";
+    }
+    if (mengandungSalahSatu(teks, ["terima kasih", "makasih", "thanks", "thx"])) {
+      return "Sama-sama! Kalau masih ada yang membingungkan, tanya lagi saja. Saya bantu sebisa mungkin.";
+    }
+    if (mengandungSalahSatu(teks, ["siapa kamu", "kamu siapa", "kamu bisa apa", "bisa bantu apa", "fitur kamu"])) {
+      return "Saya asisten informasi di prototype ini. Saya bisa bantu menjelaskan cara memakai halaman, laporan simulasi, pelacakan, privasi, dan informasi umum layanan. Saya tidak terhubung ke sistem pemerintah atau internet langsung.";
+    }
+    if (mengandungSalahSatu(teks, ["darurat", "gawat", "kebakaran", "kecelakaan", "ambulans"])) {
+      return "Kalau ini keadaan darurat, segera hubungi layanan darurat resmi di daerah Anda atau datangi fasilitas terdekat. Chat dan formulir di situs ini bukan kanal darurat dan tidak dipantau petugas.";
+    }
+    if (mengandungSalahSatu(teks, ["data pribadi", "informasi pribadi", "identitas pribadi", "privasi", "nik", "nomor telepon", "no hp", "alamat rumah", "kata sandi", "password"])) {
+      return "Sebaiknya jangan masukkan NIK, kata sandi, nomor telepon, alamat rumah, atau data pribadi sungguhan. Ini hanya prototype; laporan tersimpan lokal di browser perangkat ini dan tidak dikirim ke instansi.";
+    }
+    if (mengandungSalahSatu(teks, ["lapor", "laporan", "melapor", "melaporkan", "ngelapor", "ngelaporin", "pengaduan", "mengadu", "keluhan", "masalah warga", "jalan rusak", "sampah", "lampu jalan", "fasilitas umum"])) {
+      if (tanyaBiaya) return "Formulir laporan di situs ini hanya simulasi dan tidak memungut biaya, tetapi laporan juga tidak dikirim ke pemerintah. Untuk pengaduan sungguhan, gunakan kanal resmi pemda atau instansi terkait dan cek ketentuan kanal tersebut.";
+      if (tanyaWaktu) return "Laporan di situs ini hanya simulasi, jadi tidak ada waktu tindak lanjut atau penyelesaian yang nyata. Untuk mengetahui progres laporan sungguhan, gunakan kanal resmi instansi yang menerimanya.";
+      if (mengandungSalahSatu(teks, ["foto", "gambar", "lokasi", "gps", "koordinat"])) return "Saat membuat laporan simulasi, foto bukti dan area umum/lokasi bersifat opsional. Foto JPG, PNG, atau WebP maksimal 1 MB. Data hanya disimpan di browser ini dan tidak dikirim ke pemerintah.";
+      if (mengandungSalahSatu(teks, ["hapus", "menghapus", "delete"])) return "Laporan simulasi tersimpan di browser perangkat ini. Untuk menghapusnya, tekan tombol “Hapus semua laporan simulasi dari perangkat ini” di panel pelacakan. Perlu diingat, tombol itu menghapus semua laporan demo yang tersimpan di browser tersebut.";
+      return "Bisa. Buka bagian “Layanan Warga”, pilih kategori masalah, ceritakan kondisinya tanpa data pribadi, lalu tekan “Buat laporan simulasi”. Laporan hanya tersimpan di browser ini—belum terkirim ke pemerintah. Untuk laporan sungguhan, gunakan kanal resmi pemda atau instansi terkait.";
+    }
+    if (mengandungSalahSatu(teks, ["lacak", "tracking", "pelacakan", "resi", "kode laporan", "status laporan", "status layanan"])) {
+      if (tanyaWaktu) return "Kode pelacakan pada situs ini hanya menunjukkan status simulasi, bukan antrean atau estimasi pengerjaan sungguhan. Untuk progres dan estimasi laporan asli, hubungi kanal resmi instansi yang menangani.";
+      return "Buka “Pelacakan status layanan” di bagian Layanan Warga, lalu masukkan kode laporan dari perangkat dan browser yang sama. Kode contoh DEMO-1042 dan DEMO-2087 juga tersedia. Statusnya hanya simulasi, bukan pembaruan dari sistem pemerintah.";
+    }
+    if (mengandungSalahSatu(teks, ["ktp", "kartu tanda penduduk", "e ktp", "ektp", "kk", "kartu keluarga", "akta", "dukcapil", "nik"])) {
+      if (tanyaBiaya) return "Saya tidak bisa memastikan biaya untuk semua dokumen kependudukan karena ketentuan dapat berbeda menurut layanan dan daerah. Cek tarif serta syarat terbaru ke Disdukcapil atau kanal resmi pemda. Prototype ini tidak memproses permohonan.";
+      if (tanyaWaktu) return "Waktu penerbitan dokumen kependudukan bergantung pada jenis dokumen, kondisi pemohon, dan daerah. Tanyakan estimasi terbaru ke Disdukcapil setempat; prototype ini tidak terhubung ke proses permohonan.";
+      return "Untuk KTP, KK, atau dokumen kependudukan, syarat dan alurnya bisa berbeda sesuai kondisi dan daerah. Cek informasi terbaru ke Disdukcapil atau kanal resmi pemda setempat. Prototype ini tidak menerima atau memproses permohonan dokumen.";
+    }
+    if (mengandungSalahSatu(teks, ["izin usaha", "perizinan", "oss", "nib", "usaha", "umkm"])) {
+      if (tanyaBiaya) return "Biaya izin usaha bergantung pada jenis kegiatan dan ketentuan yang berlaku; saya tidak bisa memastikan semuanya gratis. Periksa informasi resmi di OSS atau instansi berwenang. Angka pada dashboard situs ini hanya ilustrasi.";
+      if (tanyaWaktu) return "Lama pengurusan izin usaha tidak selalu sama. Waktunya bergantung pada kegiatan, tingkat risiko, kelengkapan persyaratan, dan proses instansi terkait. Cek estimasi terbaru di OSS atau instansi berwenang; data pada dashboard ini hanya ilustrasi.";
+      return "Untuk izin usaha, persyaratan dan prosesnya bergantung pada jenis kegiatan serta tingkat risikonya. Mulailah dengan memeriksa panduan OSS dan informasi resmi instansi terkait. Tautan “panduan awal perizinan usaha” di halaman Informasi Umum juga bisa membantu; situs ini tidak menerbitkan izin.";
+    }
+    if (mengandungSalahSatu(teks, ["paspor", "imigrasi", "surat izin mengemudi", "sim", "bpjs", "pajak kendaraan", "beasiswa", "bantuan sosial", "bansos"])) {
+      if (tanyaBiaya) return "Biaya dan syaratnya bergantung pada jenis layanan serta ketentuan yang berlaku. Saya tidak punya tarif resmi terbaru; cek langsung ke instansi penyelenggara sebelum mengajukan.";
+      if (tanyaWaktu) return "Lama prosesnya bergantung pada layanan, kelengkapan persyaratan, dan instansi yang menangani. Untuk estimasi terbaru, periksa kanal resmi instansi penyelenggara.";
+      return "Untuk layanan seperti paspor, SIM, BPJS, pajak kendaraan, beasiswa, atau bantuan sosial, persyaratan dan kanal pengajuannya berbeda-beda. Cek panduan terbaru pada situs atau kantor resmi instansi yang mengelolanya; prototype ini tidak memproses pengajuan.";
+    }
+    if (tanyaBiaya) {
+      return "Saya tidak menemukan informasi tarif yang pasti untuk semua layanan di prototype ini, jadi saya tidak mau menebak atau menjanjikan semuanya gratis. Biaya bisa berbeda menurut jenis layanan dan daerah—pastikan melalui kanal resmi instansi terkait.";
+    }
+    if (tanyaWaktu) {
+      return "Waktu penyelesaian bergantung pada jenis layanan, kelengkapan dokumen, dan instansi yang menangani. Prototype ini tidak terhubung ke sistem layanan, jadi untuk estimasi yang akurat sebaiknya cek kanal resmi instansi terkait.";
+    }
+    if (mengandungSalahSatu(teks, ["daftar", "registrasi", "buat akun", "login", "masuk akun", "kata sandi"])) {
+      return "Tombol Daftar dan Login mengarah ke alur demo, bukan pembuatan akun atau autentikasi sungguhan. Gunakan data contoh saja dan jangan masukkan kata sandi maupun identitas asli.";
+    }
+    if (mengandungSalahSatu(teks, ["kesehatan", "rumah sakit", "puskesmas", "sekolah", "pendidikan", "bansos", "bantuan sosial", "pelayanan publik"])) {
+      return "Layanan publik mencakup banyak bidang, seperti administrasi, kesehatan, pendidikan, dan fasilitas umum. Halaman Informasi Umum merangkum kelompok layanan tersebut. Untuk syarat, jadwal, atau pengajuan yang spesifik, pastikan ke instansi resmi karena prototype ini hanya menyediakan informasi dan simulasi.";
+    }
+    if (mengandungSalahSatu(teks, ["foto", "gambar", "lokasi", "gps", "koordinat"])) {
+      return "Di formulir laporan simulasi, lokasi umum dan foto bukti boleh ditambahkan secara opsional. Foto JPG, PNG, atau WebP dibatasi maksimal 1 MB, dan file maupun lokasi hanya digunakan di browser ini—tidak diunggah ke pemerintah.";
+    }
+    if (mengandungSalahSatu(teks, ["apa itu pelayanan publik", "pengertian pelayanan publik", "arti pelayanan publik"])) {
+      return "Pelayanan publik adalah rangkaian kegiatan untuk memenuhi kebutuhan warga, misalnya layanan administrasi, kesehatan, pendidikan, dan fasilitas umum. Situs ini adalah prototype informasi, bukan sistem resmi untuk mengajukan layanan.";
+    }
+    if (mengandungSalahSatu(teks, ["prototype", "prototipe", "situs ini resmi", "website ini resmi", "apakah ini resmi", "legalitas situs", "situs ini untuk apa", "website ini untuk apa"])) {
+      return "Situs ini adalah prototype informasi dan simulasi layanan publik. Formulir laporan, pelacakan, pendaftaran, dan login di sini tidak terhubung ke sistem pemerintah, jadi jangan masukkan data pribadi atau mengandalkan statusnya sebagai informasi resmi.";
+    }
+
+    const kataUmum = new Set(["apa", "apakah", "bagaimana", "gimana", "dimana", "di", "ke", "dari", "yang", "dan", "atau", "saya", "aku", "bisa", "tolong", "dong", "ya", "ini", "itu", "untuk", "cara", "mau", "ingin", "berapa", "dengan", "nya"]);
+    const kataTanya = teks.split(" ").filter((kata) => kata.length > 2 && !kataUmum.has(kata));
+    const faqTerbaik = [...document.querySelectorAll("#daftarFaq .faq-item")].map((item) => {
+      const isiFaq = normalisasiTeksAi(item.textContent);
+      const skor = kataTanya.reduce((jumlah, kata) => jumlah + (isiFaq.includes(kata) ? 1 : 0), 0);
+      return { item, skor };
+    }).sort((a, b) => b.skor - a.skor)[0];
+
+    if (faqTerbaik && faqTerbaik.skor >= Math.min(2, kataTanya.length)) {
+      const jawabanFaq = faqTerbaik.item.querySelector("p");
+      if (jawabanFaq) return `${jawabanFaq.textContent} Kalau mau, ceritakan bagian yang ingin kamu pahami lebih lanjut.`;
+    }
+
+    return "Boleh tanya dengan cara lain atau ceritakan sedikit konteksnya? Saya paling bisa membantu soal penggunaan situs, laporan warga, pelacakan, KTP, izin usaha, dan informasi layanan publik. Untuk info resmi atau kondisi terkini, cek langsung ke instansi terkait karena saya tidak terhubung ke internet maupun sistem pemerintah.";
+  };
+
+  const tambahkanPesanChat = (teks, pengirim) => {
+    const pesan = document.createElement("div");
+    pesan.className = `chat-msg ${pengirim}`;
+    pesan.textContent = teks;
+    isiChatAi.appendChild(pesan);
+    isiChatAi.scrollTop = isiChatAi.scrollHeight;
+  };
+
+  formChatAi.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const pesan = inputChatAi.value.trim();
+    if (!pesan || tombolKirimChatAi.disabled) return;
+
+    tambahkanPesanChat(pesan, "user");
+    inputChatAi.value = "";
+    tombolKirimChatAi.disabled = true;
+    inputChatAi.disabled = true;
+
+    window.setTimeout(() => {
+      tambahkanPesanChat(dapatkanResponAi(pesan), "bot");
+      tombolKirimChatAi.disabled = false;
+      inputChatAi.disabled = false;
+      inputChatAi.focus();
+    }, 350);
+  });
+
+  if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const pengenalSuara = new SpeechRecognition();
+    pengenalSuara.lang = "id-ID";
+    pengenalSuara.interimResults = false;
+
+    tombolSuaraChat.addEventListener("click", () => {
+      tombolSuaraChat.classList.add("btn-danger");
+      tombolSuaraChat.classList.remove("btn-outline-secondary");
+      pengenalSuara.start();
+    });
+
+    pengenalSuara.onresult = (event) => {
+      inputChatAi.value = event.results[0][0].transcript;
+      inputChatAi.focus();
+    };
+
+    pengenalSuara.onerror = () => {
+      tombolSuaraChat.classList.remove("btn-danger");
+      tombolSuaraChat.classList.add("btn-outline-secondary");
+    };
+
+    pengenalSuara.onend = () => {
+      tombolSuaraChat.classList.remove("btn-danger");
+      tombolSuaraChat.classList.add("btn-outline-secondary");
+    };
+  } else {
+    tombolSuaraChat.disabled = true;
+    tombolSuaraChat.title = "Browser Anda tidak mendukung pengenalan suara";
+  }
+    </script>
+
+    
+<!-- Pop-up Pengumuman -->
+<div class="modal fade" id="popupPengumuman"
+     tabindex="-1"
+     aria-labelledby="judulPengumuman"
+     aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content popup-konten">
+      <h5 class="visually-hidden" id="judulPengumuman">Pengumuman Penting</h5>
+      <button type="button"
+              class="btn-close popup-tutup"
+              data-bs-dismiss="modal"
+              aria-label="Tutup">
+      </button>
+      <div class="modal-body p-0 text-center">
+        <img src="Biru Hijau ilustrasi Modern Poster Layanan Publik.png"
+             alt="Pengumuman website"
+             class="gambar-pengumuman img-fluid">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript milikmu -->
+<script src="script.js"></script>
+<script src="site-experience.js"></script>
+
+<style>
+/* Tampilan pop-up pengumuman */
+.modal-dialog.modal-lg {
+  width: fit-content;
+  max-width: calc(100% - 1rem);
+}
+
+.popup-konten {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.popup-tutup {
+  position: absolute;
+  z-index: 1;
+  top: -1.25rem;
+  right: -1.25rem;
+  padding: 0.55rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 1;
+}
+
+/* Ukuran gambar pengumuman */
+.gambar-pengumuman {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 75vh;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+/* Latar belakang website menjadi gelap */
+.modal-backdrop.show {
+  opacity: 0.7;
+}
+
+/* Animasi masuk */
+.modal.fade .modal-dialog {
+  transform: translateY(-25px) scale(0.96);
+  transition: transform 0.35s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0) scale(1);
+}
+</style>
+<!-- Bootstrap 5.3 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b58">
+  <title>Demo Masuk | Portal Layanan Publik</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #0f52ba;      /* Sapphire Blue khas institusi */
+      --primary-hover: #0b3c8a;
+      --accent-color: #10b981;       /* Emerald khas aksen islami/modern */
+      --bg-gradient: linear-gradient(135deg, #f0f4f9 0%, #e2e8f0 100%);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      color: var(--text-main);
+    }
+
+    .login-card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06), 
+                  0 1px 3px rgba(15, 23, 42, 0.03);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      width: 100%;
+      max-width: 420px;
+      padding: 40px 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Brand Header */
+    .brand-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .brand-logo-wrapper {
+      width: min(220px, 75vw);
+      height: 70px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 8px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .brand-logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Custom Form Styling */
+    .form-label {
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+      font-size: 0.875rem;
+    }
+
+    .custom-input-group {
+      position: relative;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .form-control {
+      border-radius: 12px;
+      padding: 12px 16px;
+      border: 1.5px solid #cbd5e1;
+      font-size: 0.925rem;
+      color: #0f172a;
+      background-color: #fff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-control::placeholder {
+      color: #94a3b8;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 4px rgba(15, 82, 186, 0.12);
+    }
+
+    /* Input Password Group */
+    .input-group .form-control {
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .input-group-text {
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      background: #fff;
+      border: 1.5px solid #cbd5e1;
+      border-left: none;
+      color: #64748b;
+      padding-right: 16px;
+      transition: border-color 0.2s ease;
+    }
+
+    /* Menyatu saat di-focus */
+    .input-group:focus-within .form-control,
+    .input-group:focus-within .input-group-text {
+      border-color: var(--primary-color);
+    }
+
+    .btn-toggle-password {
+      background: none;
+      border: none;
+      padding: 0;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-toggle-password:hover {
+      color: var(--primary-color);
+    }
+
+    /* Checkbox Custom */
+    .form-check-input {
+      border-radius: 6px;
+      border-color: #cbd5e1;
+      width: 1.1em;
+      height: 1.1em;
+      cursor: pointer;
+    }
+
+    .form-check-input:checked {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .form-check-label {
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Button Action */
+    .btn-primary-custom {
+      background-color: var(--primary-color);
+      border: none;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #ffffff;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(15, 82, 186, 0.25);
+    }
+
+    .btn-primary-custom:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(15, 82, 186, 0.3);
+    }
+
+    .btn-primary-custom:active {
+      transform: translateY(0);
+    }
+
+    /* Links */
+    .link-custom {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .link-custom:hover {
+      color: var(--primary-hover);
+      text-decoration: underline;
+    }
+  </style>
+  <link rel="stylesheet" href="site-animations.css">
+</head>
+<body>
+
+  <main class="login-card">
+    <!-- Identitas portal prototype -->
+    <header class="brand-header">
+      <div class="brand-logo-wrapper">
+        <a href="index.html" aria-label="Kembali ke beranda"><img src="logo%20ibad.jpg" alt="Logo Ibad Ar Rahman Islamic Boarding School" class="brand-logo"></a>
+      </div>
+      <h1 class="brand-title">PORTAL LAYANAN PUBLIK</h1>
+      <p class="brand-subtitle">Simulasi masuk akun · Gunakan data contoh</p>
+    </header>
+    <div class="alert alert-warning small" role="note">
+      Ini hanya prototype lokal, bukan autentikasi layanan pemerintah. Jangan gunakan kata sandi atau data akun yang sebenarnya.
+    </div>
+
+    <!-- Form Login -->
+    <form id="loginForm" novalidate>
+      <!-- Input Email / NIK -->
+      <div class="mb-3">
+        <label for="emailInput" class="form-label">Email atau NIK</label>
+        <input type="text" class="form-control" id="emailInput" placeholder="Masukkan Email atau NIK" autocomplete="username" required>
+        <div class="invalid-feedback">Harap masukkan Email atau NIK yang valid.</div>
+      </div>
+
+      <!-- Input Kata Sandi -->
+      <div class="mb-3">
+        <label for="passwordInput" class="form-label">Kata Sandi</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="passwordInput" placeholder="Masukkan kata sandi" autocomplete="current-password" required>
+          <span class="input-group-text">
+            <button type="button" class="btn-toggle-password" id="togglePassword" aria-label="Tampilkan kata sandi">
+              <i class="bi bi-eye" id="iconPassword"></i>
+            </button>
+          </span>
+        </div>
+        <div class="invalid-feedback">Kata sandi tidak boleh kosong.</div>
+      </div>
+
+      <!-- Remember Me -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">
+            Ingat Saya
+          </label>
+        </div>
+      </div>
+
+      <!-- Tombol Masuk -->
+      <button type="submit" class="btn btn-primary-custom w-100 mb-4" id="btnLogin">
+        <span id="btnText"><i class="bi bi-box-arrow-in-right me-2"></i>Masuk</span>
+        <span id="btnSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+      </button>
+
+      <!-- Link ke Halaman Pendaftaran -->
+      <div class="text-center">
+        <p class="small text-muted mb-0">
+          Belum memiliki akun? <a href="index2.html" class="link-custom">Daftar Sekarang</a>
+        </p>
+      </div>
+    </form>
+  </main>
+
+  <!-- Script Interaksi -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const togglePassword = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('passwordInput');
+      const iconPassword = document.getElementById('iconPassword');
+      const loginForm = document.getElementById('loginForm');
+      const emailInput = document.getElementById('emailInput');
+      const btnLogin = document.getElementById('btnLogin');
+      const btnText = document.getElementById('btnText');
+      const btnSpinner = document.getElementById('btnSpinner');
+
+      // Toggle Tampilkan / Sembunyikan Kata Sandi
+      togglePassword.addEventListener('click', () => {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        iconPassword.className = isPassword ? 'bi bi-eye-slash' : 'bi bi-eye';
+        togglePassword.setAttribute('aria-label', isPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi');
+      });
+
+      // Validasi dan Proses Form
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+
+        if (!emailInput.value.trim()) {
+          emailInput.classList.add('is-invalid');
+          isValid = false;
+        } else {
+          emailInput.classList.remove('is-invalid');
+        }
+
+        if (!passwordInput.value.trim()) {
+          passwordInput.classList.add('is-invalid');
+          isValid = false;
+        } else {
+          passwordInput.classList.remove('is-invalid');
+        }
+
+        if (isValid) {
+          // Efek Loading Tombol (Membuat visual terasa realistis)
+          btnLogin.disabled = true;
+          btnText.classList.add('d-none');
+          btnSpinner.classList.remove('d-none');
+
+          // Simpan data
+          localStorage.setItem('emailPengguna', emailInput.value.trim());
+
+          // Simulasi delay sedikit sebelum pindah halaman
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 600);
+        }
+      });
+
+      // Hilangkan status invalid saat mengetik
+      [emailInput, passwordInput].forEach(input => {
+        input.addEventListener('input', () => {
+          if (input.value.trim()) {
+            input.classList.remove('is-invalid');
+          }
+        });
+      });
+    });
+  </script>
+  <script src="site-animations.js"></script>
+</body>
+</html>
